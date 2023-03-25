@@ -1,0 +1,35 @@
+{
+  "name": "spotify-resume",
+  "version": "0.0.1",
+  "description": "This is Andre's resume/portfolio as a Spotify page.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "webpack --mode development",
+    "serve": "npm run build &  webpack-dev-server --config ./webpack.config.js --mode development"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "keywords": [
+    "resume",
+    "spotify",
+    "portfolio",
+    "scss",
+    "html",
+    "js",
+    "javascript"
+  ],
+  "author": "Andre Silva",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1"
+  }
+}
