@@ -54,10 +54,42 @@ i {
     font-weight: 300;
 }
 
+.heading-title {
+    font-family: CircularSpTitle, Helvetica Neue, helvetica, arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic;
+    line-height: 1;
+    letter-spacing: -5px;
+}
+
+.heading-light {
+    font-family: CircularSpLight, Helvetica Neue, helvetica, arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic;
+}
+
+.play-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-green-color);
+    color: var(--absolute-dark-color);
+    border-radius: 2rem;
+    width: 3rem;
+    height: 3rem;
+
+    &--lg {
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: var(--secondary-green-color);
+
+        &:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-green-color);
+        }
+    }
+}
+
 .spotify-resume {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: 20rem auto auto;
 
     background-image: linear-gradient(var(--secondary-blue-color), var(--primary-dark-color));
     color: var(--absolute-white-color);
@@ -71,23 +103,52 @@ i {
     }
 
     &__nav {
-        grid-column: 2 / -1;
-        grid-row: 1 / 2;
+        position: fixed;
+        top: 0;
+        height: 4rem;
     }
 
     &__header {
         grid-column: 2 / -1;
-        grid-row: 2 / 3;
+        grid-row: 1 / 2;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+        padding: 0 2rem 1.5rem;
+
+        &-badge {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .875rem;
+
+            i {
+                color: var(--primary-blue-color);
+            }
+        }
+
+        &-title {
+            font-size: 6rem;
+            margin: .5rem 0 1rem;
+        }
+
+        &-description {
+            font-size: 1rem;
+        }
     }
 
     &__main {
         grid-column: 2 / -1;
-        grid-row: 3 / 4;
+        grid-row: 2 / 3;
+
+        padding: 0 2rem;
     }
 
     &__footer {
         grid-column: 1 / -1;
-        grid-row: 4 / -1;
+        grid-row: 3 / -1;
     }
 
     &__logo {
@@ -115,6 +176,98 @@ i {
 
         &--social {
             margin-top: 2.5rem;
+        }
+    }
+
+    &__discography {
+        &-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__card {
+        position: relative;
+        padding: 1rem;
+        background-color: var(--secondary-dark-color);
+        border-radius: .3rem;
+        transition: all .5s;
+
+        &-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+        }
+
+        &-image {
+            width: 10.75rem;
+            border-radius: .3rem;
+            margin-bottom: 1rem;
+        }
+
+        &-icon {
+            position: absolute;
+            right: 1.8rem;
+            top: 8rem;
+            opacity: 0;
+            transform: translateY(.5rem);
+            transition: all .3s;
+        }
+
+        &-title {
+            font-size: 1rem;
+            margin-bottom: .3rem;
+        }
+
+        &-description {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: .875rem;
+            color: var(--secondary-white-color);
+
+            &-position {
+                display: flex;
+                align-items: center;
+
+                &::before {
+                    content: "•";
+                    margin: 0 .25rem;
+                    font-size: .5rem;
+                }
+            }
+        }
+
+        &:hover {
+            background-color: var(--tertiary-dark-color);
+
+            .spotify-resume__card-icon {
+                opacity: 1;
+                transform: translateY(0);
+                transition: all .3s;
+            }
+        }
+    }
+
+    &__cta {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        margin: 1.5rem 0;
+        height: 3.5rem;
+    }
+
+    &__follow {
+        color: var(--absolute-white-color);
+        border: 1px solid var(--secondary-white-color);
+        text-decoration: none;
+        padding: .5rem 1rem;
+        text-transform: uppercase;
+        font-size: .75rem;
+        border-radius: .3rem;
+
+        &:hover {
+            border-color: var(--absolute-white-color);
         }
     }
 }
