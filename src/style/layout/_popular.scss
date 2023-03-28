@@ -1,0 +1,80 @@
+.spotify-resume {
+    &__popular {
+        margin-bottom: 2.5rem;
+        padding: 0 2rem;
+
+        &-list {
+            &-item {
+                display: grid;
+                grid-template-columns: repeat(2, auto) 2fr repeat(2, 1fr) .5fr;
+                align-items: center;
+                height: 3.5rem;
+                gap: 1rem;
+                padding: 0 1rem;
+                border-radius: .3rem;
+
+                &:hover {
+                    background-color: var(--tertiary-white-color);
+
+                    .spotify-resume__popular-list-position {
+                        display: none;
+                    }
+
+                    .spotify-resume__popular-list-play {
+                        display: block;
+                    }
+                }
+            }
+
+            &-icon-box {
+                width: 1rem;
+            }
+
+            &-position {
+                color: var(--primary-white-color);
+            }
+
+            &-play {
+                display: none;
+
+                i {
+                    font-size: .8rem;
+                    color: var(--absolute-white-color);
+                }
+            }
+
+            &-logo {
+                width: 2.5rem;
+            }
+
+            &-link {
+                flex-grow: 2;
+                text-decoration: none;
+                color: var(--absolute-white-color);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            &-info {
+                color: var(--primary-white-color);
+                font-size: .875rem;
+                text-align: end;
+            }
+
+            &-like {
+                color: var(--primary-white-color);
+                text-align: end;
+
+                i {
+                    font-size: 1rem;
+
+                    &:hover {
+                        color: var(--absolute-white-color);
+                    }
+                }
+            }
+        }
+    }
+}

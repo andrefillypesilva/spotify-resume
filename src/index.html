@@ -46,18 +46,18 @@
                 </li>
             </ul>
         </aside>
-        <header class="spotify-resume__header">
+        <header class="spotify-resume__header-container">
             <!-- <nav class="spotify-resume__nav">
                 NAV
             </nav> -->
-            <h4 class="spotify-resume__header-badge heading-light">
-                <i class="fa-solid fa-certificate"></i>
-                <span>Verified Web Engineer</span>
-            </h4>
-            <h1 class="spotify-resume__header-title heading-title">André Silva</h1>
-            <h4 class="spotify-resume__header-description heading-light">81,803,969 lines of code written per month</h4>
-        </header>
-        <main class="spotify-resume__main">
+            <section class="spotify-resume__header">
+                <h4 class="spotify-resume__header-badge heading-light">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Verified Web Engineer</span>
+                </h4>
+                <h1 class="spotify-resume__header-title heading-title">André Silva</h1>
+                <h4 class="spotify-resume__header-description heading-light">81,803,969 lines of code written per month</h4>
+            </section>
             <div class="spotify-resume__cta">
                 <div class="spotify-resume__play play-btn play-btn--lg">
                     <i class="fa-solid fa-play"></i>
@@ -66,11 +66,116 @@
             </div>
             <section class="spotify-resume__popular">
                 <h2 class="spotify-resume__popular-title">Popular</h2>
-                
+                <ul class="spotify-resume__popular-list">
+                    <li class="spotify-resume__popular-list-item">
+                        <div class="spotify-resume__popular-list-icon-box">
+                            <span class="spotify-resume__popular-list-position">1</span>
+                            <a href="#" class="spotify-resume__popular-list-play">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <img src="./assets/MBio_Logo.png" class="spotify-resume__popular-list-logo" alt="MBio_Logo">
+                        <a href="#" class="spotify-resume__popular-list-link heading-light">Online TestDrive Booking</a>
+                        <span class="spotify-resume__popular-list-info heading-light">Vue, VanillaJS, GraphQL</span>
+                        <div class="spotify-resume__popular-list-like">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <span class="spotify-resume__popular-list-info heading-light">2021-2023</span>
+                    </li>
+                    <li class="spotify-resume__popular-list-item">
+                        <div class="spotify-resume__popular-list-icon-box">
+                            <span class="spotify-resume__popular-list-position">2</span>
+                            <a href="#" class="spotify-resume__popular-list-play">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <img src="./assets/Outgo_Logo.jpeg" class="spotify-resume__popular-list-logo" alt="Outgo_Logo">
+                        <a href="#" class="spotify-resume__popular-list-link heading-light">Outgo App</a>
+                        <span class="spotify-resume__popular-list-info heading-light">Angular, Ionic, Rails</span>
+                        <div class="spotify-resume__popular-list-like">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <span class="spotify-resume__popular-list-info heading-light">2019</span>
+                    </li>
+                    <li class="spotify-resume__popular-list-item">
+                        <div class="spotify-resume__popular-list-icon-box">
+                            <span class="spotify-resume__popular-list-position">3</span>
+                            <a href="#" class="spotify-resume__popular-list-play">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <img src="./assets/Edge_Logo.jpeg" class="spotify-resume__popular-list-logo" alt="Edge_Logo">
+                        <a href="#" class="spotify-resume__popular-list-link heading-light">CMS for telephone companies</a>
+                        <span class="spotify-resume__popular-list-info heading-light">Angular, VanillaJS</span>
+                        <div class="spotify-resume__popular-list-like">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <span class="spotify-resume__popular-list-info heading-light">2020-2021</span>
+                    </li>
+                    <li class="spotify-resume__popular-list-item">
+                        <div class="spotify-resume__popular-list-icon-box">
+                            <span class="spotify-resume__popular-list-position">4</span>
+                            <a href="#" class="spotify-resume__popular-list-play">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <img src="./assets/Npm_Logo.png" class="spotify-resume__popular-list-logo" alt="Npm_Logo">
+                        <a href="#" class="spotify-resume__popular-list-link heading-light">datastructures-es6 NPM package (single)</a>
+                        <span class="spotify-resume__popular-list-info heading-light">VanillaJS, Data Structures</span>
+                        <div class="spotify-resume__popular-list-like">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <span class="spotify-resume__popular-list-info heading-light">2023</span>
+                    </li>
+                    <li class="spotify-resume__popular-list-item">
+                        <div class="spotify-resume__popular-list-icon-box">
+                            <span class="spotify-resume__popular-list-position">5</span>
+                            <a href="#" class="spotify-resume__popular-list-play">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <img src="./assets/TCE_Logo.jpeg" class="spotify-resume__popular-list-logo" alt="TCE_Logo">
+                        <a href="#" class="spotify-resume__popular-list-link heading-light">Portal do Gestor</a>
+                        <span class="spotify-resume__popular-list-info heading-light">Angular, .NET, SQL Server</span>
+                        <div class="spotify-resume__popular-list-like">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <span class="spotify-resume__popular-list-info heading-light">2015-2018</span>
+                    </li>
+                </ul>
             </section>
+        </header>
+        <main class="spotify-resume__main">
             <section class="spotify-resume__discography">
                 <h2 class="spotify-resume__discography-title">Discography</h2>
                 
+                <div class="spotify-resume__discography-markets">
+                    <button class="spotify-resume__discography-markets-btn spotify-resume__discography-markets-btn--active heading-light">
+                        Popular releases
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light">
+                        Worldwide
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light">
+                        Brazil
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light">
+                        Indonesia
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light">
+                        Italy
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light">
+                        Portugal
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light">
+                        Qatar
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light">
+                        Uruguay
+                    </button>
+                </div>
+
                 <div class="spotify-resume__card-container">
                     <div class="spotify-resume__card">
                         <img src="./assets/MBio_Logo.png" class="spotify-resume__card-image" alt="Company Logo">
@@ -117,6 +222,17 @@
                         </p>
                     </div>
                     <div class="spotify-resume__card">
+                        <img src="./assets/TCE_Logo.jpeg" class="spotify-resume__card-image" alt="Company Logo">
+                        <h3 class="spotify-resume__card-title">TCE/RN</h3>
+                        <div class="spotify-resume__card-icon play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <p class="spotify-resume__card-description heading-light">
+                            <time datetime="2015">2015-2018</time>
+                            <span class="spotify-resume__card-description-position">Mid-Level Web Developer</span>
+                        </p>
+                    </div>
+                    <div class="spotify-resume__card">
                         <img src="./assets/Mobster_Logo.jpeg" class="spotify-resume__card-image" alt="Company Logo">
                         <h3 class="spotify-resume__card-title">Mobster</h3>
                         <div class="spotify-resume__card-icon play-btn">
@@ -129,9 +245,95 @@
                     </div>
                 </div>
             </section>
+            <section class="spotify-resume__on-tour">
+                <h2 class="spotify-resume__on-tour-title">On Tour</h2>
+
+                <ul class="spotify-resume__on-tour-list">
+                    <li class="spotify-resume__on-tour-item">
+                        <div class="spotify-resume__on-tour-item-date">
+                            <span>Oct </span>
+                            <time datetime="2016">2016</time>
+                        </div>
+                        <div class="spotify-resume__on-tour-item-description">
+                            <h4>Speaker in Scientific Congress at Universidade Potiguar - UnP</h4>
+                            <p class="heading-light">Associated with Universidade Potiguar</p>
+                        </div>
+                    </li>
+                    <li class="spotify-resume__on-tour-item">
+                        <div class="spotify-resume__on-tour-item-date">
+                            <span>Dec </span>
+                            <time datetime="2016">2015</time>
+                        </div>
+                        <div class="spotify-resume__on-tour-item-description">
+                            <h4>Winner of the first Hackathon of the Tribunais de Contas do Brasil</h4>
+                            <p class="heading-light">Associated with Tribunal de Contas do RN - TCE/RN</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="spotify-resume__appears-on">
+                <h2 class="spotify-resume__appears-on-title">Appears On</h2>
+                
+                <div class="spotify-resume__card-container">
+                    <div class="spotify-resume__card">
+                        <img src="./assets/UE_Logo.jpeg" class="spotify-resume__card-image" alt="University Logo">
+                        <div class="spotify-resume__card-icon play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <h3 class="spotify-resume__card-title">Universidade Europeia</h3>
+                        <p class="spotify-resume__card-description heading-light">
+                            <time datetime="2022">2021-2022</time>
+                            <span class="spotify-resume__card-description-position">Postgraduate degree in Web Front-End Programming</span>
+                        </p>
+                    </div>
+                    <div class="spotify-resume__card">
+                        <img src="./assets/UNP_Logo.jpeg" class="spotify-resume__card-image" alt="University Logo">
+                        <div class="spotify-resume__card-icon play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <h3 class="spotify-resume__card-title">Universidade Potiguar</h3>
+                        <p class="spotify-resume__card-description heading-light">
+                            <time datetime="2018">2016-2018</time>
+                            <span class="spotify-resume__card-description-position">Bachelor's Degree in Systems Analysis and Development</span>
+                        </p>
+                    </div>
+                    <div class="spotify-resume__card">
+                        <img src="./assets/IFRN_Logo.jpeg" class="spotify-resume__card-image" alt="University Logo">
+                        <div class="spotify-resume__card-icon play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <h3 class="spotify-resume__card-title">Instituto Federal</h3>
+                        <p class="spotify-resume__card-description heading-light">
+                            <time datetime="2012">2009-2012</time>
+                            <span class="spotify-resume__card-description-position">IT Certificate</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="spotify-resume__about">
+                <h2 class="spotify-resume__about-title">About</h2>
+                <div class="spotify-resume__about-container">
+                    <div class="spotify-resume__about-position heading-light">
+                        <span class="heading-bold">#5</span> in the world
+                    </div>
+                    <div class="spotify-resume__about-info">
+                        <div class="spotify-resume__about-title">
+                            81,803,969 lines of code written per month
+                        </div>
+                        <div class="spotify-resume__about-description heading-light">
+                            <p>I've been used to build code since when I can't remember more.</p>
+                            <p>Write clean, fast and smart code completes me, not only because it gives me money, but mainly because it challenges and allows me to think differently.</p>
+                            <p>I also like to help and lead people to get a true purpose where I am working.</p>
+                            <p>I worked in five companies, developing or leading small teams and what I can say about myself is I am ready to face many different environments and projects. As a developer, I have worked with PHP, C#, .NET, Angular, Ionic, MySQL, SQL SERVER, PostgreSQL, jQuery, Bootstrap and many others technologies. I also have good knowledge in MVC and DDD patterns.</p>
+                            <p>I won the first Hackathon of the Tribunais de Contas do Brasil developing an app in Ionic and Firebase and I already lectured at Universidade Potiguar (UnP), during the scientific congress, about these technologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr class="spotify-resume__end-of-content">
         </main>
-        <footer class="spotify-resume__footer">
+        <!-- <footer class="spotify-resume__footer">
             FOOTER
-        </footer>
+        </footer> -->
     </body>
 </html>

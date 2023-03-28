@@ -1,0 +1,9 @@
+.spotify-resume {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(3, auto);
+
+    color: var(--absolute-white-color);
+
+    background-color: var(--primary-dark-color);
+}

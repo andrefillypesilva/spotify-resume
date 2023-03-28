@@ -1,0 +1,41 @@
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+@font-face {
+    font-family: "CircularSp";
+    src: url("./assets/fonts/circularspotifytext-medium-webfont.woff") format("woff"),
+}
+
+@font-face {
+    font-family: "CircularSpTitle";
+    src: url("./assets/fonts/circularspotifytext-black-webfont.woff") format("woff"),
+}
+
+@font-face {
+    font-family: "CircularSpBold";
+    src: url("./assets/fonts/circularspotifytext-bold-webfont.woff") format("woff"),
+}
+
+@font-face {
+    font-family: "CircularSpLight";
+    src: url("./assets/fonts/circularspotifytext-light-webfont.woff") format("woff"),
+}
+
+.heading-title {
+    font-family: CircularSpTitle, Helvetica Neue, helvetica, arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.heading-bold {
+    font-family: CircularSpBold, Helvetica Neue, helvetica, arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic;
+    letter-spacing: 2px;
+}
+
+.heading-light {
+    font-family: CircularSpLight, Helvetica Neue, helvetica, arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic;
+}

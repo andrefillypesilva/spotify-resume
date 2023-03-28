@@ -1,0 +1,38 @@
+.spotify-resume {
+    &__on-tour {
+        margin-bottom: 2.5rem;
+        
+        &-title {
+            margin-bottom: .5rem;
+        }
+
+        &-list {
+            display: flex;
+            gap: 2rem;
+        }
+
+        &-item {
+            display: flex;
+            gap: 1rem;
+
+            &-date {
+                @include flex-center;
+                flex-direction: column;
+                padding: .8rem;
+                font-size: .875rem;
+                background-color: var(--secondary-dark-color);
+                border-radius: .3rem;
+
+                time {
+                    font-size: 1.5rem;
+                }
+            }
+
+            &-description {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}

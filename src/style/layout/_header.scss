@@ -1,0 +1,39 @@
+.spotify-resume {
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        height: 40vh;
+
+        padding: 0 2rem 1.5rem;
+
+        background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%), url("./assets/background-profile.png");
+        background-size: cover;
+
+        &-container {
+            grid-column: 2 / -1;
+            grid-row: 1 / 2;
+
+            background-image: linear-gradient(var(--primary-gradient-blue-color) 40%, var(--secondary-gradient-blue-color) 55%, var(--tertiary-gradient-blue-color) 65%, var(--primary-dark-color) 75%, var(--primary-dark-color));
+        }
+
+        &-badge {
+            @include flex-center;
+            gap: .5rem;
+            font-size: .875rem;
+
+            i {
+                color: var(--primary-blue-color);
+            }
+        }
+
+        &-title {
+            font-size: 6rem;
+            margin: .5rem 0 1rem;
+        }
+
+        &-description {
+            font-size: 1rem;
+        }
+    }
+}

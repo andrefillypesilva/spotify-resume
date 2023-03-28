@@ -1,0 +1,30 @@
+.spotify-resume {
+    &__discography {
+        margin-bottom: 2.5rem;
+
+        &-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        &-markets {
+            display: flex;
+            gap: .5rem;
+            margin-bottom: 1.5rem;
+
+            &-btn {
+                background-color: var(--tertiary-dark-color);
+                color: var(--absolute-white-color);
+                padding: .4rem .875rem;
+                border-radius: 1rem;
+                border: none;
+                font-size: .875rem;
+
+                &--active {
+                    background-color: var(--absolute-white-color);
+                    color: var(--absolute-dark-color);
+                }
+            }
+        }
+    }
+}
