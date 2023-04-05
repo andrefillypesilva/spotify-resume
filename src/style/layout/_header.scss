@@ -6,9 +6,22 @@
         height: 40vh;
 
         padding: 0 2rem 1.5rem;
+        position: relative;
 
-        background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%), url("./assets/background-profile.png");
-        background-size: cover;
+        &::before {
+            background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%), url("./assets/background-profile.png");
+            background-size: var(--bg-size);
+            background-position-x: center;
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: var(--bg-opacity);
+            z-index: 0;
+        }
 
         &-container {
             grid-column: 2 / -1;
@@ -21,6 +34,7 @@
             @include flex-center;
             gap: .5rem;
             font-size: .875rem;
+            z-index: 1;
 
             i {
                 color: var(--primary-blue-color);
@@ -30,10 +44,12 @@
         &-title {
             font-size: 6rem;
             margin: .5rem 0 1rem;
+            z-index: 1;
         }
 
         &-description {
             font-size: 1rem;
+            z-index: 1;
         }
     }
 }

@@ -8,12 +8,12 @@
 
         &-container {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(12.75rem, 1fr));
             gap: 1.5rem;
         }
 
         &-image {
-            width: 10.75rem;
+            width: 100%;
             border-radius: .3rem;
             margin-bottom: 1rem;
         }

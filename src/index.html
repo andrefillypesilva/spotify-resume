@@ -50,7 +50,7 @@
             <!-- <nav class="spotify-resume__nav">
                 NAV
             </nav> -->
-            <section class="spotify-resume__header">
+            <section class="spotify-resume__header" style="--bg-opacity: 1; --bg-size: 100%">
                 <h4 class="spotify-resume__header-badge heading-light">
                     <i class="fa-solid fa-certificate"></i>
                     <span>Verified Web Engineer</span>
@@ -150,34 +150,37 @@
                 <h2 class="spotify-resume__discography-title">Discography</h2>
                 
                 <div class="spotify-resume__discography-markets">
-                    <button class="spotify-resume__discography-markets-btn spotify-resume__discography-markets-btn--active heading-light">
+                    <button class="spotify-resume__discography-markets-btn spotify-resume__discography-markets-btn--active heading-light" data-group="popular">
                         Popular releases
                     </button>
-                    <button class="spotify-resume__discography-markets-btn heading-light">
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="worldwide">
                         Worldwide
                     </button>
-                    <button class="spotify-resume__discography-markets-btn heading-light">
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="brazil">
                         Brazil
                     </button>
-                    <button class="spotify-resume__discography-markets-btn heading-light">
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="germany">
+                        Germany
+                    </button>
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="indonesia">
                         Indonesia
                     </button>
-                    <button class="spotify-resume__discography-markets-btn heading-light">
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="italy">
                         Italy
                     </button>
-                    <button class="spotify-resume__discography-markets-btn heading-light">
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="portugal">
                         Portugal
                     </button>
-                    <button class="spotify-resume__discography-markets-btn heading-light">
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="qatar">
                         Qatar
                     </button>
-                    <button class="spotify-resume__discography-markets-btn heading-light">
+                    <button class="spotify-resume__discography-markets-btn heading-light" data-group="uruguay">
                         Uruguay
                     </button>
                 </div>
 
                 <div class="spotify-resume__card-container">
-                    <div class="spotify-resume__card">
+                    <div class="spotify-resume__card" data-group="popular,worldwide,germany,portugal">
                         <img src="./assets/MBio_Logo.png" class="spotify-resume__card-image" alt="Company Logo">
                         <div class="spotify-resume__card-icon play-btn">
                             <i class="fa-solid fa-play"></i>
@@ -188,7 +191,7 @@
                             <span class="spotify-resume__card-description-position">Frontend Engineer</span>
                         </p>
                     </div>
-                    <div class="spotify-resume__card">
+                    <div class="spotify-resume__card" data-group="popular,brazil,indonesia,portugal,qatar,uruguay">
                         <img src="./assets/Edge_Logo.jpeg" class="spotify-resume__card-image" alt="Company Logo">
                         <h3 class="spotify-resume__card-title">Edge</h3>
                         <div class="spotify-resume__card-icon play-btn">
@@ -199,7 +202,7 @@
                             <span class="spotify-resume__card-description-position">Senior Angular Developer</span>
                         </p>
                     </div>
-                    <div class="spotify-resume__card">
+                    <div class="spotify-resume__card" data-group="popular,italy,portugal">
                         <img src="./assets/Smart_Logo.jpeg" class="spotify-resume__card-image" alt="Company Logo">
                         <h3 class="spotify-resume__card-title">Smart Consulting</h3>
                         <div class="spotify-resume__card-icon play-btn">
@@ -210,7 +213,7 @@
                             <span class="spotify-resume__card-description-position">Mid-level C# Developer</span>
                         </p>
                     </div>
-                    <div class="spotify-resume__card">
+                    <div class="spotify-resume__card" data-group="popular,brazil">
                         <img src="./assets/Outgo_Logo.jpeg" class="spotify-resume__card-image" alt="Company Logo">
                         <h3 class="spotify-resume__card-title">Outgo</h3>
                         <div class="spotify-resume__card-icon play-btn">
@@ -221,7 +224,7 @@
                             <span class="spotify-resume__card-description-position">Mid-level Web Developer</span>
                         </p>
                     </div>
-                    <div class="spotify-resume__card">
+                    <div class="spotify-resume__card" data-group="popular,brazil">
                         <img src="./assets/TCE_Logo.jpeg" class="spotify-resume__card-image" alt="Company Logo">
                         <h3 class="spotify-resume__card-title">TCE/RN</h3>
                         <div class="spotify-resume__card-icon play-btn">
@@ -232,7 +235,7 @@
                             <span class="spotify-resume__card-description-position">Mid-Level Web Developer</span>
                         </p>
                     </div>
-                    <div class="spotify-resume__card">
+                    <div class="spotify-resume__card" data-group="popular,brazil">
                         <img src="./assets/Mobster_Logo.jpeg" class="spotify-resume__card-image" alt="Company Logo">
                         <h3 class="spotify-resume__card-title">Mobster</h3>
                         <div class="spotify-resume__card-icon play-btn">
