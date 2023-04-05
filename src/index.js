@@ -6,6 +6,7 @@ class Index {
     init() {
         window.addEventListener('scroll', () => {
             this.scrollListener(window.scrollY);
+            this.likeListener();
             this.tagMarketsListener();
         });
     }
@@ -20,6 +21,16 @@ class Index {
         if (opacity < 0) opacity = 0;
         
         document.querySelector('.spotify-resume__header').style = `--bg-opacity: ${opacity}; --bg-size: ${size}%`;
+    }
+
+    likeListener() {
+        document.querySelector('.spotify-resume__popular-list').addEventListener('click', (event) => {
+            if (event.target.classList.value.split(' ').includes('fa-heart--active')) {
+                event.target.classList.remove('fa-heart--active');
+            } else {
+                event.target.classList.add('fa-heart--active');
+            }
+        });
     }
 
     tagMarketsListener() {

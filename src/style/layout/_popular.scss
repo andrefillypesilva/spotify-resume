@@ -67,11 +67,20 @@
                 color: var(--primary-white-color);
                 text-align: end;
 
-                i {
+                .fa-heart {
                     font-size: 1rem;
+                    position: relative;
 
                     &:hover {
                         color: var(--absolute-white-color);
+                    }
+
+                    &--active {
+                        color: var(--highlight-green-color);
+
+                        &:hover {
+                            color: var(--primary-green-color);
+                        }
                     }
                 }
             }
