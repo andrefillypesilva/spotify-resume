@@ -7,6 +7,7 @@
     --highlight-dark-color: #2a2929;
 
     --absolute-white-color: #fff;
+    --opaque-absolute-white-color: rgb(from var(--absolute-white-color) r g b / 0);
     --primary-white-color: #b3b3b3;
     --secondary-white-color: #6a6a6a;
     --tertiary-white-color: #323638;

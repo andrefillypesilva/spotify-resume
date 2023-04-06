@@ -1,0 +1,25 @@
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.invisible {
+    opacity: 0;
+    color: var(--opaque-absolute-white-color);
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--secondary-gradient-blue-color);
+    height: 4.5rem;
+    z-index: 3;
+}
+
+.below-fixed {
+    margin-top: 6.5rem;
+}

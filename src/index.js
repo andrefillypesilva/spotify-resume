@@ -6,9 +6,24 @@ class Index {
     init() {
         window.addEventListener('scroll', () => {
             this.scrollListener(window.scrollY);
-            this.likeListener();
-            this.tagMarketsListener();
+
+            const ctaBar = document.querySelector('.spotify-resume__cta');
+            const popularSection = document.querySelector('.spotify-resume__popular');
+            const ctaTitle = document.querySelector('.spotify-resume__cta-title');
+
+            ctaBar.classList.remove('fixed');
+            popularSection.classList.remove('below-fixed');
+            if (window.scrollY >= ctaBar.offsetTop + 16) {
+                ctaBar.classList.add('fixed');
+                popularSection.classList.add('below-fixed');
+                ctaTitle.classList.remove('invisible');
+            } else {
+                ctaTitle.classList.add('invisible');
+            }
         });
+        
+        this.likeListener();
+        this.tagMarketsListener();
     }
 
     scrollListener(position) {
@@ -38,24 +53,26 @@ class Index {
             const buttons = document.querySelectorAll('.spotify-resume__discography-markets-btn');
             const cards = document.querySelectorAll('.spotify-resume__card');
 
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove('spotify-resume__discography-markets-btn--active');
-            }
+            if (event.target.dataset.group) {
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.remove('spotify-resume__discography-markets-btn--active');
+                }
+                
+                event.target.classList.add('spotify-resume__discography-markets-btn--active');
 
-            event.target.classList.add('spotify-resume__discography-markets-btn--active');
+                for (let i = 0; i < cards.length; i++) {
+                    if (cards[i].dataset && cards[i].dataset.group) {
+                        const groups = cards[i].dataset.group.split(',');
 
-            for (let i = 0; i < cards.length; i++) {
-                if (cards[i].dataset && cards[i].dataset.group) {
-                    const groups = cards[i].dataset.group.split(',');
+                        cards[i].classList.remove('show');
+                        cards[i].classList.add('hide');
 
-                    cards[i].classList.remove('show');
-                    cards[i].classList.add('hide');
+                        if (groups.includes(event.target.dataset.group)) {
+                            cards[i].classList.remove('hide');
+                            cards[i].classList.add('show');
+                        }
 
-                    if (groups.includes(event.target.dataset.group)) {
-                        cards[i].classList.remove('hide');
-                        cards[i].classList.add('show');
                     }
-
                 }
             }
         });
