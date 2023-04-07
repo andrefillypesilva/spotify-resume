@@ -1,9 +1,14 @@
 import './index.scss';
 
+import { FetchDataService } from './services/fetch-data.service.js';
+import { RenderService } from './services/render.service.js';
+
 class Index {
     constructor() {}
 
     init() {
+        this.renderData();
+
         window.addEventListener('scroll', () => {
             this.scrollListener(window.scrollY);
 
@@ -24,6 +29,45 @@ class Index {
         
         this.likeListener();
         this.tagMarketsListener();
+    }
+
+    renderData() {
+        this.renderPersonalDataSection();
+        this.renderPopularProjectsSection();
+        this.renderDiscographySection();
+        this.renderOntourSection();
+        this.renderAppearsonSection();
+        this.renderAboutSection();
+    }
+
+    async renderPersonalDataSection() {
+        const personalData = await FetchDataService.fetchPersonalData();
+
+        const list = document.querySelector('.spotify-resume__personal-data');
+        const socialList = document.querySelector('.spotify-resume__personal-data--social');
+
+        RenderService.createPersonalDataElements(personalData.listItems, list);
+        RenderService.createPersonalDataElements(personalData.socialListItems, socialList);
+    }
+
+    renderPopularProjectsSection() {
+
+    }
+
+    renderDiscographySection() {
+
+    }
+
+    renderOntourSection() {
+
+    }
+
+    renderAppearsonSection() {
+
+    }
+
+    renderAboutSection() {
+
     }
 
     scrollListener(position) {
