@@ -1,8 +1,16 @@
 export class FetchDataService {
-    static async fetchPersonalData() {
-        const response = await fetch('./data/personal-data.json');
+    static async fetchData(name) {
+        const response = await fetch(`./data/${name}.json`);
         const jsonData = await response.json();
 
         return jsonData;
+    }
+
+    static async fetchPersonalData() {
+        return await FetchDataService.fetchData('personal-data');
+    }
+
+    static async fetchPopularProjects() {
+        return await FetchDataService.fetchData('popular');
     }
 }

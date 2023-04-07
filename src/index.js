@@ -50,8 +50,12 @@ class Index {
         RenderService.createPersonalDataElements(personalData.socialListItems, socialList);
     }
 
-    renderPopularProjectsSection() {
+    async renderPopularProjectsSection() {
+        const { popular } = await FetchDataService.fetchPopularProjects();
 
+        const list = document.querySelector('.spotify-resume__popular-list');
+
+        RenderService.createPopularProjectsElements(popular, list);
     }
 
     renderDiscographySection() {
