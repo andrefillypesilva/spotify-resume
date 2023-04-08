@@ -58,8 +58,12 @@ class Index {
         RenderService.createPopularProjectsElements(popular, list);
     }
 
-    renderDiscographySection() {
+    async renderDiscographySection() {
+        const { discography } = await FetchDataService.fetchDiscography();
 
+        const list = document.querySelector('.spotify-resume__card-container');
+
+        RenderService.createDiscography(discography, list);
     }
 
     renderOntourSection() {

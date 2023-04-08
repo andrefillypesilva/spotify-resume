@@ -84,4 +84,46 @@ export class RenderService {
             list.append(liItem);
         }
     }
+
+    static createDiscography(discography, list) {
+        for (let i = 0; i < discography.length; i++) {
+            const divItem = document.createElement('div');
+            const imgItem = document.createElement('img');
+            const playItem = document.createElement('div');
+            const iconItem = document.createElement('i');
+            const titleItem = document.createElement('h3');
+            const descriptionItem = document.createElement('p');
+            const timeItem = document.createElement('time');
+            const positionItem = document.createElement('span');
+
+            iconItem.className = 'fa-solid fa-play';
+            playItem.className = 'spotify-resume__card-icon play-btn';
+            playItem.append(iconItem);
+
+            timeItem.setAttribute('datetime', discography[i].year);
+            timeItem.textContent = discography[i].period;
+            positionItem.className = 'spotify-resume__card-description-position';
+            positionItem.textContent = discography[i].position;
+            descriptionItem.className = 'spotify-resume__card-description heading-light';
+            descriptionItem.append(timeItem);
+            descriptionItem.append(positionItem);
+
+            divItem.className = 'spotify-resume__card';
+            divItem.setAttribute('data-group', discography[i].group.join(','));
+
+            imgItem.className = 'spotify-resume__card-image';
+            imgItem.setAttribute('src', discography[i].img.path);
+            imgItem.setAttribute('alt', discography[i].img.alt);
+
+            titleItem.className = 'spotify-resume__card-title';
+            titleItem.textContent = discography[i].label;
+
+            divItem.append(imgItem);
+            divItem.append(playItem);
+            divItem.append(titleItem);
+            divItem.append(descriptionItem);
+
+            list.append(divItem);
+        }
+    }
 }

@@ -13,4 +13,8 @@ export class FetchDataService {
     static async fetchPopularProjects() {
         return await FetchDataService.fetchData('popular');
     }
+
+    static async fetchDiscography() {
+        return await FetchDataService.fetchData('discography');
+    }
 }
