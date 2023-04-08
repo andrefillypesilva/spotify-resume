@@ -59,11 +59,13 @@ class Index {
     }
 
     async renderDiscographySection() {
-        const { discography } = await FetchDataService.fetchDiscography();
+        const { discography, markets } = await FetchDataService.fetchDiscography();
 
         const list = document.querySelector('.spotify-resume__card-container');
+        const marketsList = document.querySelector('.spotify-resume__discography-markets');
 
         RenderService.createDiscography(discography, list);
+        RenderService.createMarkets(markets, marketsList);
     }
 
     renderOntourSection() {

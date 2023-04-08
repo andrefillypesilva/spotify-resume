@@ -1,4 +1,42 @@
 {
+    "markets": [
+        {
+            "label": "Popular releases",
+            "group": "popular"
+        },
+        {
+            "label": "Worldwide",
+            "group": "worldwide"
+        },
+        {
+            "label": "Brazil",
+            "group": "brazil"
+        },
+        {
+            "label": "Germany",
+            "group": "germany"
+        },
+        {
+            "label": "Indonesia",
+            "group": "indonesia"
+        },
+        {
+            "label": "Italy",
+            "group": "italy"
+        },
+        {
+            "label": "Portugal",
+            "group": "portugal"
+        },
+        {
+            "label": "Qatar",
+            "group": "qatar"
+        },
+        {
+            "label": "Uruguay",
+            "group": "uruguay"
+        }
+    ],
     "discography": [
         {
             "group": [

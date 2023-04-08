@@ -126,4 +126,17 @@ export class RenderService {
             list.append(divItem);
         }
     }
+
+    static createMarkets(markets, list) {
+        for (let i = 0; i < markets.length; i++) {
+            const btnItem = document.createElement('button');
+
+            btnItem.className = 'spotify-resume__discography-markets-btn heading-light';
+            if (i === 0) btnItem.classList.add('spotify-resume__discography-markets-btn--active');
+            btnItem.setAttribute('data-group', markets[i].group);
+            btnItem.textContent = markets[i].label;
+
+            list.append(btnItem);
+        }
+    }
 }
