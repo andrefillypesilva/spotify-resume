@@ -25,4 +25,8 @@ export class FetchDataService {
     static async fetchOnTour() {
         return await FetchDataService.fetchData('on-tour');
     }
+
+    static async fetchAboutData() {
+        return await FetchDataService.fetchData('about');
+    }
 }

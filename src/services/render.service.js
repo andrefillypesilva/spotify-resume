@@ -173,4 +173,32 @@ export class RenderService {
             list.append(liItem);
         }
     }
+
+    static createAboutElements(about, container) {
+        const positionItem = document.createElement('div');
+        const spanPositionItem = document.createElement('span');
+        const aboutInfoItem = document.createElement('div');
+        const aboutInfoAchievementItem = document.createElement('div');
+        const aboutDescriptionItem = document.createElement('div');
+
+        spanPositionItem.className = 'heading-bold';
+        spanPositionItem.textContent = `#${about.position}`;
+
+        positionItem.className = 'spotify-resume__about-position heading-light';
+        positionItem.append(spanPositionItem);
+        positionItem.append(' in the world');
+
+        aboutInfoAchievementItem.className = 'spotify-resume__about-title';
+        aboutInfoAchievementItem.textContent = about.achievement;
+
+        aboutDescriptionItem.className = 'spotify-resume__about-description heading-light';
+        aboutDescriptionItem.innerHTML = about.description;
+
+        aboutInfoItem.className = 'spotify-resume__about-info';
+        aboutInfoItem.append(aboutInfoAchievementItem);
+        aboutInfoItem.append(aboutDescriptionItem);
+
+        container.append(positionItem);
+        container.append(aboutInfoItem);
+    }
 }

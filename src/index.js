@@ -84,8 +84,12 @@ class Index {
         RenderService.createCardsElements(appearsOn, list);
     }
 
-    renderAboutSection() {
+    async renderAboutSection() {
+        const { about } = await FetchDataService.fetchAboutData();
 
+        const container = document.querySelector('.spotify-resume__about-container');
+
+        RenderService.createAboutElements(about, container);
     }
 
     scrollListener(position) {
