@@ -64,12 +64,16 @@ class Index {
         const list = document.querySelector('.spotify-resume__discography').querySelector('.spotify-resume__card-container');
         const marketsList = document.querySelector('.spotify-resume__discography-markets');
 
-        RenderService.createCards(discography, list);
-        RenderService.createMarkets(markets, marketsList);
+        RenderService.createCardsElements(discography, list);
+        RenderService.createMarketsElements(markets, marketsList);
     }
 
-    renderOntourSection() {
+    async renderOntourSection() {
+        const { onTour } = await FetchDataService.fetchOnTour();
 
+        const list = document.querySelector('.spotify-resume__on-tour-list');
+
+        RenderService.createOnTourElements(onTour, list);
     }
 
     async renderAppearsonSection() {
@@ -77,7 +81,7 @@ class Index {
 
         const list = document.querySelector('.spotify-resume__appears-on').querySelector('.spotify-resume__card-container');
 
-        RenderService.createCards(appearsOn, list);
+        RenderService.createCardsElements(appearsOn, list);
     }
 
     renderAboutSection() {

@@ -85,7 +85,7 @@ export class RenderService {
         }
     }
 
-    static createCards(cards, list) {
+    static createCardsElements(cards, list) {
         for (let i = 0; i < cards.length; i++) {
             const divItem = document.createElement('div');
             const imgItem = document.createElement('img');
@@ -127,7 +127,7 @@ export class RenderService {
         }
     }
 
-    static createMarkets(markets, list) {
+    static createMarketsElements(markets, list) {
         for (let i = 0; i < markets.length; i++) {
             const btnItem = document.createElement('button');
 
@@ -137,6 +137,40 @@ export class RenderService {
             btnItem.textContent = markets[i].label;
 
             list.append(btnItem);
+        }
+    }
+
+    static createOnTourElements(onTour, list) {
+        for (let i = 0; i < onTour.length; i++) {
+            const liItem = document.createElement('li');
+            const dateItem = document.createElement('div');
+            const dateSpanItem = document.createElement('span');
+            const timeItem = document.createElement('time');
+            const infoItem = document.createElement('div');
+            const titleItem = document.createElement('h4');
+            const descriptionItem = document.createElement('p');
+
+            dateSpanItem.textContent = onTour[i].month;
+            timeItem.setAttribute('datetime', onTour[i].year);
+            timeItem.textContent = onTour[i].year;
+
+            dateItem.className = 'spotify-resume__on-tour-item-date';
+            dateItem.append(dateSpanItem);
+            dateItem.append(timeItem);
+
+            titleItem.textContent = onTour[i].title;
+            descriptionItem.className = 'heading-light';
+            descriptionItem.textContent = onTour[i].description;
+
+            infoItem.className = 'spotify-resume__on-tour-item-description';
+            infoItem.append(titleItem);
+            infoItem.append(descriptionItem);
+
+            liItem.className = 'spotify-resume__on-tour-item';
+            liItem.append(dateItem);
+            liItem.append(infoItem);
+
+            list.append(liItem);
         }
     }
 }

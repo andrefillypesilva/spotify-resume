@@ -21,4 +21,8 @@ export class FetchDataService {
     static async fetchAppearsOn() {
         return await FetchDataService.fetchData('appears-on');
     }
+
+    static async fetchOnTour() {
+        return await FetchDataService.fetchData('on-tour');
+    }
 }
