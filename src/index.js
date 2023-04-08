@@ -61,10 +61,10 @@ class Index {
     async renderDiscographySection() {
         const { discography, markets } = await FetchDataService.fetchDiscography();
 
-        const list = document.querySelector('.spotify-resume__card-container');
+        const list = document.querySelector('.spotify-resume__discography').querySelector('.spotify-resume__card-container');
         const marketsList = document.querySelector('.spotify-resume__discography-markets');
 
-        RenderService.createDiscography(discography, list);
+        RenderService.createCards(discography, list);
         RenderService.createMarkets(markets, marketsList);
     }
 
@@ -72,8 +72,12 @@ class Index {
 
     }
 
-    renderAppearsonSection() {
+    async renderAppearsonSection() {
+        const { appearsOn } = await FetchDataService.fetchAppearsOn();
 
+        const list = document.querySelector('.spotify-resume__appears-on').querySelector('.spotify-resume__card-container');
+
+        RenderService.createCards(appearsOn, list);
     }
 
     renderAboutSection() {

@@ -85,8 +85,8 @@ export class RenderService {
         }
     }
 
-    static createDiscography(discography, list) {
-        for (let i = 0; i < discography.length; i++) {
+    static createCards(cards, list) {
+        for (let i = 0; i < cards.length; i++) {
             const divItem = document.createElement('div');
             const imgItem = document.createElement('img');
             const playItem = document.createElement('div');
@@ -100,23 +100,23 @@ export class RenderService {
             playItem.className = 'spotify-resume__card-icon play-btn';
             playItem.append(iconItem);
 
-            timeItem.setAttribute('datetime', discography[i].year);
-            timeItem.textContent = discography[i].period;
+            timeItem.setAttribute('datetime', cards[i].year);
+            timeItem.textContent = cards[i].period;
             positionItem.className = 'spotify-resume__card-description-position';
-            positionItem.textContent = discography[i].position;
+            positionItem.textContent = cards[i].position;
             descriptionItem.className = 'spotify-resume__card-description heading-light';
             descriptionItem.append(timeItem);
             descriptionItem.append(positionItem);
 
             divItem.className = 'spotify-resume__card';
-            divItem.setAttribute('data-group', discography[i].group.join(','));
+            if (cards[i].group) divItem.setAttribute('data-group', cards[i].group.join(','));
 
             imgItem.className = 'spotify-resume__card-image';
-            imgItem.setAttribute('src', discography[i].img.path);
-            imgItem.setAttribute('alt', discography[i].img.alt);
+            imgItem.setAttribute('src', cards[i].img.path);
+            imgItem.setAttribute('alt', cards[i].img.alt);
 
             titleItem.className = 'spotify-resume__card-title';
-            titleItem.textContent = discography[i].label;
+            titleItem.textContent = cards[i].label;
 
             divItem.append(imgItem);
             divItem.append(playItem);

@@ -17,4 +17,8 @@ export class FetchDataService {
     static async fetchDiscography() {
         return await FetchDataService.fetchData('discography');
     }
+
+    static async fetchAppearsOn() {
+        return await FetchDataService.fetchData('appears-on');
+    }
 }
