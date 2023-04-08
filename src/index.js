@@ -32,6 +32,7 @@ class Index {
     }
 
     renderData() {
+        this.renderGeneralDataSection();
         this.renderPersonalDataSection();
         this.renderPopularProjectsSection();
         this.renderDiscographySection();
@@ -40,14 +41,22 @@ class Index {
         this.renderAboutSection();
     }
 
+    async renderGeneralDataSection() {
+        const { general } = await FetchDataService.fetchGeneralData();
+
+        const container = document.querySelector('.spotify-resume__header-container');
+
+        RenderService.createGeneralDataElements(general, container);
+    }
+
     async renderPersonalDataSection() {
-        const personalData = await FetchDataService.fetchPersonalData();
+        const { listItems, socialListItems } = await FetchDataService.fetchPersonalData();
 
         const list = document.querySelector('.spotify-resume__personal-data');
         const socialList = document.querySelector('.spotify-resume__personal-data--social');
 
-        RenderService.createPersonalDataElements(personalData.listItems, list);
-        RenderService.createPersonalDataElements(personalData.socialListItems, socialList);
+        RenderService.createPersonalDataElements(listItems, list);
+        RenderService.createPersonalDataElements(socialListItems, socialList);
     }
 
     async renderPopularProjectsSection() {

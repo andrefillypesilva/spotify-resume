@@ -1,4 +1,58 @@
 export class RenderService {
+    static createGeneralDataElements(general, container) {
+        const sectionHeaderItem = document.createElement('section');
+        const positionItem = document.createElement('h4');
+        const iconItem = document.createElement('i');
+        const spanPositionItem = document.createElement('span');
+        const nameItem = document.createElement('h1');
+        const achievementItem = document.createElement('h4');
+        const ctaItem = document.createElement('div');
+        const playItem = document.createElement('div');
+        const iconPlayItem = document.createElement('i');
+        const linkItem = document.createElement('a');
+        const supportNameItem = document.createElement('h3');
+
+        sectionHeaderItem.className = 'spotify-resume__header';
+        sectionHeaderItem.setAttribute('style', '--bg-opacity: 1; --bg-size: 100%');
+
+        positionItem.className = 'spotify-resume__header-badge heading-light';
+        iconItem.className = 'fa-solid fa-certificate';
+        spanPositionItem.textContent = general.position;
+        positionItem.append(iconItem);
+        positionItem.append(spanPositionItem);
+
+        nameItem.className = 'spotify-resume__header-title heading-title';
+        nameItem.textContent = general.name;
+
+        achievementItem.className = 'spotify-resume__header-description heading-light';
+        achievementItem.textContent = general.achievement;
+
+        sectionHeaderItem.append(positionItem);
+        sectionHeaderItem.append(nameItem);
+        sectionHeaderItem.append(achievementItem);
+
+        ctaItem.className = 'spotify-resume__cta';
+
+        playItem.className = 'spotify-resume__play play-btn play-btn--lg';
+        iconPlayItem.className = 'fa-solid fa-play';
+        playItem.append(iconPlayItem);
+
+        linkItem.className = 'spotify-resume__follow';
+        linkItem.setAttribute('target', '_blank');
+        linkItem.setAttribute('href', general.followLink);
+        linkItem.textContent = 'Follow';
+
+        supportNameItem.className = 'spotify-resume__cta-title invisible';
+        supportNameItem.textContent = general.name;
+
+        ctaItem.append(playItem);
+        ctaItem.append(linkItem);
+        ctaItem.append(supportNameItem);
+
+        container.prepend(ctaItem);
+        container.prepend(sectionHeaderItem);
+    }
+
     static createPersonalDataElements(personalData, list) {
         for (let i = 0; i < personalData.length; i++) {
             const liItem = document.createElement('li');

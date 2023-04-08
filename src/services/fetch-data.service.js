@@ -6,6 +6,10 @@ export class FetchDataService {
         return jsonData;
     }
 
+    static async fetchGeneralData() {
+        return await FetchDataService.fetchData('general');
+    }
+
     static async fetchPersonalData() {
         return await FetchDataService.fetchData('personal-data');
     }
