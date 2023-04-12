@@ -9,23 +9,7 @@ class Index {
     init() {
         this.renderData();
 
-        window.addEventListener('scroll', () => {
-            this.scrollListener(window.scrollY);
-
-            const ctaBar = document.querySelector('.spotify-resume__cta');
-            const popularSection = document.querySelector('.spotify-resume__popular');
-            const ctaTitle = document.querySelector('.spotify-resume__cta-title');
-
-            ctaBar.classList.remove('fixed');
-            popularSection.classList.remove('below-fixed');
-            if (window.scrollY >= ctaBar.offsetTop + 16) {
-                ctaBar.classList.add('fixed');
-                popularSection.classList.add('below-fixed');
-                ctaTitle.classList.remove('invisible');
-            } else {
-                ctaTitle.classList.add('invisible');
-            }
-        });
+        window.addEventListener('scroll', () => this.stickyActionsBar());
         
         this.likeListener();
         this.tagMarketsListener();
@@ -151,6 +135,24 @@ class Index {
                 }
             }
         });
+    }
+
+    stickyActionsBar() {
+        this.scrollListener(window.scrollY);
+
+        const ctaBar = document.querySelector('.spotify-resume__cta');
+        const popularSection = document.querySelector('.spotify-resume__popular');
+        const ctaTitle = document.querySelector('.spotify-resume__cta-title');
+
+        ctaBar.classList.remove('fixed');
+        popularSection.classList.remove('below-fixed');
+        if (window.scrollY >= ctaBar.offsetTop + 16) {
+            ctaBar.classList.add('fixed');
+            popularSection.classList.add('below-fixed');
+            ctaTitle.classList.remove('invisible');
+        } else {
+            ctaTitle.classList.add('invisible');
+        }
     }
 }
 

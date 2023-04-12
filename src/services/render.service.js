@@ -1,53 +1,24 @@
+import { HTMLElementFactory } from "../factories/HTMLElement.factory.js";
+
 export class RenderService {
     static createGeneralDataElements(general, container) {
-        const sectionHeaderItem = document.createElement('section');
-        const positionItem = document.createElement('h4');
-        const iconItem = document.createElement('i');
-        const spanPositionItem = document.createElement('span');
-        const nameItem = document.createElement('h1');
-        const achievementItem = document.createElement('h4');
-        const ctaItem = document.createElement('div');
-        const playItem = document.createElement('div');
-        const iconPlayItem = document.createElement('i');
-        const linkItem = document.createElement('a');
-        const supportNameItem = document.createElement('h3');
+        const iconItem = HTMLElementFactory.createElement('i', 'fa-solid fa-certificate');
+        const spanPositionItem = HTMLElementFactory.createElement('span', null, [], general.position);
+        const positionItem = HTMLElementFactory.createElement('h4', 'spotify-resume__header-badge heading-light', [], null, null, [iconItem, spanPositionItem]);
+        const nameItem = HTMLElementFactory.createElement('h1', 'spotify-resume__header-title heading-title', [], general.name);
+        const achievementItem = HTMLElementFactory.createElement('h4', 'spotify-resume__header-description heading-light', [], general.achievement);
+        const sectionHeaderItem = HTMLElementFactory.createElement('section', 'spotify-resume__header', [
+            { key: 'style', value: '--bg-opacity: 1; --bg-size: 100%' }
+        ], null, null, [positionItem, nameItem, achievementItem]);
 
-        sectionHeaderItem.className = 'spotify-resume__header';
-        sectionHeaderItem.setAttribute('style', '--bg-opacity: 1; --bg-size: 100%');
-
-        positionItem.className = 'spotify-resume__header-badge heading-light';
-        iconItem.className = 'fa-solid fa-certificate';
-        spanPositionItem.textContent = general.position;
-        positionItem.append(iconItem);
-        positionItem.append(spanPositionItem);
-
-        nameItem.className = 'spotify-resume__header-title heading-title';
-        nameItem.textContent = general.name;
-
-        achievementItem.className = 'spotify-resume__header-description heading-light';
-        achievementItem.textContent = general.achievement;
-
-        sectionHeaderItem.append(positionItem);
-        sectionHeaderItem.append(nameItem);
-        sectionHeaderItem.append(achievementItem);
-
-        ctaItem.className = 'spotify-resume__cta';
-
-        playItem.className = 'spotify-resume__play play-btn play-btn--lg';
-        iconPlayItem.className = 'fa-solid fa-play';
-        playItem.append(iconPlayItem);
-
-        linkItem.className = 'spotify-resume__follow';
-        linkItem.setAttribute('target', '_blank');
-        linkItem.setAttribute('href', general.followLink);
-        linkItem.textContent = 'Follow';
-
-        supportNameItem.className = 'spotify-resume__cta-title invisible';
-        supportNameItem.textContent = general.name;
-
-        ctaItem.append(playItem);
-        ctaItem.append(linkItem);
-        ctaItem.append(supportNameItem);
+        const iconPlayItem = HTMLElementFactory.createElement('i', 'fa-solid fa-play');
+        const playItem = HTMLElementFactory.createElement('div', 'spotify-resume__play play-btn play-btn--lg', [], null, null, [iconPlayItem]);
+        const linkItem = HTMLElementFactory.createElement('a', 'spotify-resume__follow', [
+            { key: 'target', value: '_blank' },
+            { key: 'href', value: general.followLink }
+        ], 'Follow');
+        const supportNameItem = HTMLElementFactory.createElement('h3', 'spotify-resume__cta-title invisible', [], general.name);
+        const ctaItem = HTMLElementFactory.createElement('div', 'spotify-resume__cta', [], null, null, [playItem, linkItem, supportNameItem]);
 
         container.prepend(ctaItem);
         container.prepend(sectionHeaderItem);
@@ -55,25 +26,15 @@ export class RenderService {
 
     static createPersonalDataElements(personalData, list) {
         for (let i = 0; i < personalData.length; i++) {
-            const liItem = document.createElement('li');
-            const aItem = document.createElement('a');
-            const iconItem = document.createElement('i');
-            const spanItem = document.createElement('span');
+            const personalDataItem = personalData[i];
 
-            liItem.className = 'spotify-resume__personal-data-item';
-            
-            aItem.className = 'spotify-resume__personal-data-link';
-            aItem.setAttribute('target', '_blank');
-            aItem.setAttribute('href', personalData[i].link);
-
-            iconItem.className = personalData[i].icon;
-
-            spanItem.textContent = personalData[i].label;
-
-            aItem.append(iconItem);
-            aItem.append(spanItem);
-
-            liItem.append(aItem);
+            const iconItem = HTMLElementFactory.createElement('i', personalDataItem.icon);
+            const spanItem = HTMLElementFactory.createElement('span', null, [], personalDataItem.label);
+            const aItem = HTMLElementFactory.createElement('a', 'spotify-resume__personal-data-link', [
+                { key: 'target', value: '_blank' },
+                { key: 'href', value: personalDataItem.link }
+            ], null, null, [iconItem, spanItem]);
+            const liItem = HTMLElementFactory.createElement('li', 'spotify-resume__personal-data-item', [], null, null, [aItem]);
 
             list.append(liItem);
         }
@@ -81,59 +42,30 @@ export class RenderService {
 
     static createPopularProjectsElements(popularData, list) {
         for (let i = 0; i < popularData.length; i++) {
-            const liItem = document.createElement('li');
-            const divItem = document.createElement('div');
-            const positionItem = document.createElement('span');
-            const playItem = document.createElement('a');
-            const iconItem = document.createElement('i');
-            const imgItem = document.createElement('img');
-            const aItem = document.createElement('a');
-            const technologiesSpan = document.createElement('span');
-            const likeItem = document.createElement('div');
-            const likeIcon = document.createElement('i');
-            const periodItem = document.createElement('span');
+            const popularDataItem = popularData[i];
 
-            liItem.className = 'spotify-resume__popular-list-item';
-
-            divItem.className = 'spotify-resume__popular-list-icon-box';
-
-            positionItem.className = 'spotify-resume__popular-list-position';
-            positionItem.textContent = i + 1;
-
-            playItem.className = 'spotify-resume__popular-list-play';
-            playItem.setAttribute('href', '#');
-
-            iconItem.className = 'fa-solid fa-play';
-
-            imgItem.className = `spotify-resume__popular-list-logo ${i < 2 ? 'spotify-resume__popular-list-logo--padding' : ''}`;
-            imgItem.setAttribute('alt', popularData[i].image.alt);
-            imgItem.setAttribute('src', popularData[i].image.path);
-
-            aItem.className = 'spotify-resume__popular-list-link heading-light';
-            aItem.setAttribute('href', '#');
-            aItem.textContent = popularData[i].label;
-
-            technologiesSpan.className = 'spotify-resume__popular-list-info heading-light';
-            technologiesSpan.textContent = popularData[i].technologies.join(', ');
-
-            likeItem.className = 'spotify-resume__popular-list-like';
-            likeIcon.className = 'fa-regular fa-heart';
-
-            periodItem.className = 'spotify-resume__popular-list-info heading-light';
-            periodItem.textContent = popularData[i].period;
-
-            playItem.append(iconItem);
-            divItem.append(positionItem);
-            divItem.append(playItem);
-            
-            likeItem.append(likeIcon);
-
-            liItem.append(divItem);
-            liItem.append(imgItem);
-            liItem.append(aItem);
-            liItem.append(technologiesSpan);
-            liItem.append(likeItem);
-            liItem.append(periodItem);
+            const positionItem = HTMLElementFactory.createElement('span', 'spotify-resume__popular-list-position', [], i + 1);
+            const iconItem = HTMLElementFactory.createElement('i', 'fa-solid fa-play');
+            const playItem = HTMLElementFactory.createElement('a', 'spotify-resume__popular-list-play', [
+                { key: 'href', value: '#' }
+            ], null, null, [iconItem]);
+            const divItem = HTMLElementFactory.createElement('div', 'spotify-resume__popular-list-icon-box', [], null, null, [positionItem, playItem]);
+            const imgItem = HTMLElementFactory.createElement(
+                'img',
+                `spotify-resume__popular-list-logo ${i < 2 ? 'spotify-resume__popular-list-logo--padding' : ''}`,
+                [
+                    { key: 'alt', value: popularDataItem.image.alt },
+                    { key: 'src', value: popularDataItem.image.path }
+                ]
+            );
+            const aItem = HTMLElementFactory.createElement('a', 'spotify-resume__popular-list-link heading-light', [
+                { key: 'href', value: '#' }
+            ], popularDataItem.label);
+            const technologiesSpan = HTMLElementFactory.createElement('span', 'spotify-resume__popular-list-info heading-light', [], popularDataItem.technologies.join(', '));
+            const likeIcon = HTMLElementFactory.createElement('i', 'fa-regular fa-heart');
+            const likeItem = HTMLElementFactory.createElement('div', 'spotify-resume__popular-list-like', [], null, null, [likeIcon]);
+            const periodItem = HTMLElementFactory.createElement('span', 'spotify-resume__popular-list-info heading-light', [], popularDataItem.period);
+            const liItem = HTMLElementFactory.createElement('li', 'spotify-resume__popular-list-item', [], null, null, [divItem, imgItem, aItem, technologiesSpan, likeItem, periodItem]);
 
             list.append(liItem);
         }
@@ -141,6 +73,8 @@ export class RenderService {
 
     static createCardsElements(cards, list) {
         for (let i = 0; i < cards.length; i++) {
+            const cardsItem = cards[i];
+
             const divItem = document.createElement('div');
             const imgItem = document.createElement('img');
             const playItem = document.createElement('div');
@@ -154,23 +88,24 @@ export class RenderService {
             playItem.className = 'spotify-resume__card-icon play-btn';
             playItem.append(iconItem);
 
-            timeItem.setAttribute('datetime', cards[i].year);
-            timeItem.textContent = cards[i].period;
+            timeItem.setAttribute('datetime', cardsItem.year);
+            timeItem.textContent = cardsItem.period;
             positionItem.className = 'spotify-resume__card-description-position';
-            positionItem.textContent = cards[i].position;
+            positionItem.textContent = cardsItem.position;
             descriptionItem.className = 'spotify-resume__card-description heading-light';
             descriptionItem.append(timeItem);
             descriptionItem.append(positionItem);
 
             divItem.className = 'spotify-resume__card';
-            if (cards[i].group) divItem.setAttribute('data-group', cards[i].group.join(','));
+            if (cardsItem.group) divItem.setAttribute('data-group', cardsItem.group.join(','));
 
             imgItem.className = 'spotify-resume__card-image';
-            imgItem.setAttribute('src', cards[i].img.path);
-            imgItem.setAttribute('alt', cards[i].img.alt);
+            if (cardsItem.label === 'Smart Consulting') imgItem.classList.add('spotify-resume__card-image--padding');
+            imgItem.setAttribute('src', cardsItem.img.path);
+            imgItem.setAttribute('alt', cardsItem.img.alt);
 
             titleItem.className = 'spotify-resume__card-title';
-            titleItem.textContent = cards[i].label;
+            titleItem.textContent = cardsItem.label;
 
             divItem.append(imgItem);
             divItem.append(playItem);
@@ -183,12 +118,14 @@ export class RenderService {
 
     static createMarketsElements(markets, list) {
         for (let i = 0; i < markets.length; i++) {
+            const marketsItem = markets[i];
+
             const btnItem = document.createElement('button');
 
             btnItem.className = 'spotify-resume__discography-markets-btn heading-light';
             if (i === 0) btnItem.classList.add('spotify-resume__discography-markets-btn--active');
-            btnItem.setAttribute('data-group', markets[i].group);
-            btnItem.textContent = markets[i].label;
+            btnItem.setAttribute('data-group', marketsItem.group);
+            btnItem.textContent = marketsItem.label;
 
             list.append(btnItem);
         }
@@ -196,6 +133,8 @@ export class RenderService {
 
     static createOnTourElements(onTour, list) {
         for (let i = 0; i < onTour.length; i++) {
+            const onTourItem = onTour[i];
+
             const liItem = document.createElement('li');
             const dateItem = document.createElement('div');
             const dateSpanItem = document.createElement('span');
@@ -204,17 +143,17 @@ export class RenderService {
             const titleItem = document.createElement('h4');
             const descriptionItem = document.createElement('p');
 
-            dateSpanItem.textContent = onTour[i].month;
-            timeItem.setAttribute('datetime', onTour[i].year);
-            timeItem.textContent = onTour[i].year;
+            dateSpanItem.textContent = onTourItem.month;
+            timeItem.setAttribute('datetime', onTourItem.year);
+            timeItem.textContent = onTourItem.year;
 
             dateItem.className = 'spotify-resume__on-tour-item-date';
             dateItem.append(dateSpanItem);
             dateItem.append(timeItem);
 
-            titleItem.textContent = onTour[i].title;
+            titleItem.textContent = onTourItem.title;
             descriptionItem.className = 'heading-light';
-            descriptionItem.textContent = onTour[i].description;
+            descriptionItem.textContent = onTourItem.description;
 
             infoItem.className = 'spotify-resume__on-tour-item-description';
             infoItem.append(titleItem);
