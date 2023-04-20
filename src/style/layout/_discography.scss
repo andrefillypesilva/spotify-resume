@@ -24,6 +24,10 @@
                     background-color: var(--absolute-white-color);
                     color: var(--absolute-dark-color);
                 }
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }

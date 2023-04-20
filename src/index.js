@@ -1,28 +1,50 @@
 import './index.scss';
-
+import { ApiSpotifyService } from './services/api-spotify.service.js';
 import { FetchDataService } from './services/fetch-data.service.js';
+import { LocalStorageService } from './services/local-storage.service.js';
 import { RenderService } from './services/render.service.js';
 
 class Index {
     constructor() {}
 
     init() {
-        this.renderData();
-
-        window.addEventListener('scroll', () => this.stickyActionsBar());
+        const params = new URLSearchParams(window.location.search);
         
-        this.likeListener();
-        this.tagMarketsListener();
+        if (ApiSpotifyService.hasValidToken()) {
+            this.bootstrapApplication();
+        } else if (params.get('auth')) {
+            const tokenPromise = ApiSpotifyService.getToken(params.get('code'));
+            
+            tokenPromise.then(tokenObj => {
+                ApiSpotifyService.setTokenInLocalStorage(tokenObj);
+                this.bootstrapApplication();
+            });
+        } else {
+            ApiSpotifyService.auth();
+        }
     }
 
-    renderData() {
-        this.renderGeneralDataSection();
-        this.renderPersonalDataSection();
-        this.renderPopularProjectsSection();
-        this.renderDiscographySection();
-        this.renderOntourSection();
-        this.renderAppearsonSection();
-        this.renderAboutSection();
+    async bootstrapApplication() {
+        await this.renderData();
+        window.addEventListener('scroll', () => this.stickyActionsBar());
+        this.likeListener();
+        this.tagMarketsListener();
+        this.createSpotifyInstance();
+        
+        window.onbeforeunload = function()
+        {
+            LocalStorageService.removeItem('device_id');
+        };
+    }
+
+    async renderData() {
+        await this.renderGeneralDataSection();
+        await this.renderPersonalDataSection();
+        await this.renderPopularProjectsSection();
+        await this.renderDiscographySection();
+        await this.renderOntourSection();
+        await this.renderAppearsonSection();
+        await this.renderAboutSection();
     }
 
     async renderGeneralDataSection() {
@@ -152,6 +174,49 @@ class Index {
             ctaTitle.classList.remove('invisible');
         } else {
             ctaTitle.classList.add('invisible');
+        }
+    }
+
+    createSpotifyInstance() {
+        const token = LocalStorageService.getItem('token');
+
+        const script = document.createElement('script');
+        script.src = process.env.SPOTIFY_SDK;
+        script.async = true;
+
+        document.body.append(script);
+
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            const player = new window.Spotify.Player({
+                name: process.env.SPOTIFY_PLAYER_NAME,
+                getOAuthToken: cb => { cb(token); },
+                volume: 1,
+            });
+
+            player.connect().then(() => {
+                document.querySelector('.spotify-resume__play').classList.remove('play-btn--disabled');
+            });
+
+            document.querySelector('.spotify-resume__play').onclick = async () => this.togglePlay(token, player);
+        };
+    }
+
+    async togglePlay(token, player) {
+        if (!LocalStorageService.getItem('device_id')) {
+            await ApiSpotifyService.getActiveDevices(token);
+        }
+        
+        player.togglePlay();
+
+        const playBtn = document.querySelector('.spotify-resume__play').querySelector('.fa-play');
+        const pauseBtn = document.querySelector('.spotify-resume__play').querySelector('.fa-pause');
+
+        if (playBtn) {
+            playBtn.classList.remove('fa-play');
+            playBtn.classList.add('fa-pause');
+        } else {
+            pauseBtn.classList.remove('fa-pause');
+            pauseBtn.classList.add('fa-play');
         }
     }
 }

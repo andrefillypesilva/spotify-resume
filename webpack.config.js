@@ -2,6 +2,7 @@ import path from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { fileURLToPath } from 'url';
+import Dotenv from 'dotenv-webpack';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,6 +33,9 @@ export default {
         static: path.resolve(__dirname, './dist'),
         compress: true,
         port: 3000,
+        proxy: {
+            "/auth/**": "http://localhost:5000"
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -45,5 +49,6 @@ export default {
                 { from: 'src/data', to: 'data' },
             ],
         }),
+        new Dotenv(),
     ],
 }

@@ -12,7 +12,7 @@ export class RenderService {
         ], null, null, [positionItem, nameItem, achievementItem]);
 
         const iconPlayItem = HTMLElementFactory.createElement('i', 'fa-solid fa-play');
-        const playItem = HTMLElementFactory.createElement('div', 'spotify-resume__play play-btn play-btn--lg', [], null, null, [iconPlayItem]);
+        const playItem = HTMLElementFactory.createElement('div', 'spotify-resume__play play-btn play-btn--lg play-btn--disabled', [], null, null, [iconPlayItem]);
         const linkItem = HTMLElementFactory.createElement('a', 'spotify-resume__follow', [
             { key: 'target', value: '_blank' },
             { key: 'href', value: general.followLink }
