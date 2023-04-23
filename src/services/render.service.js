@@ -198,6 +198,37 @@ export class RenderService {
         container.append(aboutInfoItem);
     }
 
+    static createPlayingNowElements(container) {
+        const figureTitle = HTMLElementFactory.createElement('figure', 'playing-now__track-box-caption-title heading-light');
+        const figureDescription = HTMLElementFactory.createElement('figure', 'playing-now__track-box-caption-description heading-light');
+        const figureCaption = HTMLElementFactory.createElement('figure', 'playing-now__track-box-caption', [], null, null, [figureTitle, figureDescription]);
+        const figureImg = HTMLElementFactory.createElement('img', 'playing-now__track-box-image');
+        const figure = HTMLElementFactory.createElement('figure', 'playing-now__track-box', [], null, null, [figureImg, figureCaption]);
+
+        const controlShuffleIcon = HTMLElementFactory.createElement('i', 'fa-solid fa-shuffle');
+        const controlBackwardIcon = HTMLElementFactory.createElement('i', 'fa-solid fa-backward-step');
+        const controlPlayIcon = HTMLElementFactory.createElement('i', 'fa-solid fa-play');
+        const controlPlayBtn = HTMLElementFactory.createElement('div', 'play-btn play-btn--white', [], null, null, [controlPlayIcon]);
+        const controlForwardIcon = HTMLElementFactory.createElement('i', 'fa-solid fa-forward-step');
+        const controlRepeatIcon = HTMLElementFactory.createElement('i', 'fa-solid fa-repeat');
+        const controlActions = HTMLElementFactory.createElement('div', 'playing-now__player-control-actions', [], null, null, [controlShuffleIcon, controlBackwardIcon, controlPlayBtn, controlForwardIcon, controlRepeatIcon]);
+
+        const controlProgressBarActive = HTMLElementFactory.createElement('div', 'playing-now__player-control-progress-bar--active');
+        const controlProgressBarFull = HTMLElementFactory.createElement('div', 'playing-now__player-control-progress-bar--full', [], null, null, [controlProgressBarActive]);
+        const controlProgressBarContainer = HTMLElementFactory.createElement('div', 'playing-now__player-control-progress-bar-container', [], null, null, [controlProgressBarFull]);
+        const controlProgressBar = HTMLElementFactory.createElement('div', 'playing-now__player-control-progress-bar', [], null, null, [controlProgressBarContainer]);
+        
+        const control = HTMLElementFactory.createElement('div', 'playing-now__player-control', [], null, null, [controlActions, controlProgressBar]);
+
+        const detailsIcon = HTMLElementFactory.createElement('i', 'fa-solid fa-headphones');
+        const detailsDescription = HTMLElementFactory.createElement('p', 'heading-light', [], 'This playlist helps André Silva to be a better Web Engineer');
+        const details = HTMLElementFactory.createElement('div', 'playing-now__player-details', [], null, null, [detailsIcon, detailsDescription]);
+     
+        container.append(figure);
+        container.append(control);
+        container.append(details);
+    }
+
     static scrollListener(position) {
         let opacity = 1;
         opacity = 1000 - (position * 3.5);

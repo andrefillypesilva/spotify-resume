@@ -54,6 +54,7 @@ class Index {
         await this.renderOntourSection();
         await this.renderAppearsonSection();
         await this.renderAboutSection();
+        this.renderPlayingNowSection();
     }
 
     async renderGeneralDataSection() {
@@ -114,6 +115,12 @@ class Index {
         const container = document.querySelector('.spotify-resume__about-container');
 
         RenderService.createAboutElements(about, container);
+    }
+
+    renderPlayingNowSection() {
+        const container = document.querySelector('.playing-now');
+
+        RenderService.createPlayingNowElements(container);
     }
 
     createSpotifyInstance() {
