@@ -1,0 +1,126 @@
+.playing-now {
+    display: none;
+    height: 5.625rem;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--secondary-dark-color);
+    border-top: 1px solid var(--tertiary-dark-color);
+
+    &__track-box {
+        display: flex;
+        align-items: center;
+        flex: 1 0 0;
+        height: 3.5rem;
+
+        img {
+            height: 100%;
+        }
+
+        &-caption {
+            margin: 0 .875rem;
+
+            &-title {
+                font-size: .875rem;
+            }
+
+            &-description {
+                font-size: .6875rem;
+                color: var(--primary-white-color);
+            }
+        }
+    }
+
+    &__player-control {
+        flex: 1.25 0 0;
+
+        &-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            .fa-shuffle, .fa-backward-step, .fa-forward-step, .fa-repeat {
+                color: var(--primary-white-color);
+
+                &:hover {
+                    color: var(--absolute-white-color);
+                }
+            }
+
+            .fa-shuffle, .fa-repeat {
+                font-size: 1rem;
+
+                &--active {
+                    color: var(--highlight-green-color);
+                    position: relative;
+
+                    &:hover {
+                        color: var(--highlight-green-color);
+                    }
+
+                    &::after {
+                        height: .25rem;
+                        width: .25rem;
+                        content: " ";
+                        background-color: var(--highlight-green-color);
+                        position: absolute;
+                        bottom: -.5rem;
+                        left: .3rem;
+                        border-radius: .5rem;
+                    }
+                }
+            }
+
+            .fa-shuffle {
+                margin-right: 2rem;
+            }
+
+            .fa-repeat {
+                margin-left: 2rem;
+            }
+        }
+
+        &-progress-bar {
+            position: relative;
+            height: 1.125rem;
+
+            &-container {
+                position: absolute;
+                width: 100%;
+                padding-top: 1rem;
+                cursor: pointer;
+            }
+
+            &--full {
+                height: .25rem;
+                background: var(--primary-white-color);
+                width: 100%;
+                border-radius: .5rem;
+                overflow: hidden;
+            }
+
+            &--active {
+                height: 100%;
+                width: 0;
+                background-color: var(--absolute-white-color);
+            }
+
+            &:hover {
+                .playing-now__player-control-progress-bar--active {
+                    background-color: var(--highlight-green-color);
+                }
+            }
+        }
+    }
+
+    &__player-details {
+        flex: 1 0 0;
+        text-align: center;
+        font-size: .8rem;
+    }
+}

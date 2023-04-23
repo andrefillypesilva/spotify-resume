@@ -1,4 +1,7 @@
-import { HTMLElementFactory } from "../factories/HTMLElement.factory.js";
+import { HTMLElementFactory } from '../factories/HTMLElement.factory.js';
+import { ApiSpotifyService } from './api-spotify.service.js';
+import { LocalStorageService } from './local-storage.service.js';
+import { SpotifyDataService } from './spotify-data.service.js';
 
 export class RenderService {
     static createGeneralDataElements(general, container) {
@@ -193,5 +196,146 @@ export class RenderService {
 
         container.append(positionItem);
         container.append(aboutInfoItem);
+    }
+
+    static scrollListener(position) {
+        let opacity = 1;
+        opacity = 1000 - (position * 3.5);
+
+        const size = 100 + (position / 100);
+        opacity = opacity / 1000;
+
+        if (opacity < 0) opacity = 0;
+        
+        document.querySelector('.spotify-resume__header').style = `--bg-opacity: ${opacity}; --bg-size: ${size}%`;
+    }
+
+    static likeListener() {
+        document.querySelector('.spotify-resume__popular-list').addEventListener('click', (event) => {
+            if (event.target.classList.value.split(' ').includes('fa-heart--active')) {
+                event.target.classList.remove('fa-heart--active');
+            } else {
+                event.target.classList.add('fa-heart--active');
+            }
+        });
+    }
+
+    static tagMarketsListener() {
+        document.querySelector('.spotify-resume__discography-markets').addEventListener('click', (event) => {
+            const buttons = document.querySelectorAll('.spotify-resume__discography-markets-btn');
+            const cards = document.querySelectorAll('.spotify-resume__card');
+
+            if (event.target.dataset.group) {
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.remove('spotify-resume__discography-markets-btn--active');
+                }
+                
+                event.target.classList.add('spotify-resume__discography-markets-btn--active');
+
+                for (let i = 0; i < cards.length; i++) {
+                    if (cards[i].dataset && cards[i].dataset.group) {
+                        const groups = cards[i].dataset.group.split(',');
+
+                        cards[i].classList.remove('show');
+                        cards[i].classList.add('hide');
+
+                        if (groups.includes(event.target.dataset.group)) {
+                            cards[i].classList.remove('hide');
+                            cards[i].classList.add('show');
+                        }
+
+                    }
+                }
+            }
+        });
+    }
+
+    static stickyActionsBar() {
+        RenderService.scrollListener(window.scrollY);
+
+        const ctaBar = document.querySelector('.spotify-resume__cta');
+        const popularSection = document.querySelector('.spotify-resume__popular');
+        const ctaTitle = document.querySelector('.spotify-resume__cta-title');
+
+        ctaBar.classList.remove('fixed');
+        popularSection.classList.remove('below-fixed');
+        if (window.scrollY >= ctaBar.offsetTop + 16) {
+            ctaBar.classList.add('fixed');
+            popularSection.classList.add('below-fixed');
+            ctaTitle.classList.remove('invisible');
+        } else {
+            ctaTitle.classList.add('invisible');
+        }
+    }
+
+    static updateTrackProgressBar({ duration }, position) {
+        const progressBarValue = (position * 100) / duration;
+        const progressBar = document.querySelector('.playing-now__player-control-progress-bar--active');
+        progressBar.style.width = `${progressBarValue}%`;
+    }
+
+    static spotifyPlayerConnected(player, playerDetails) {
+        document.querySelector('.spotify-resume__play').classList.remove('play-btn--disabled');
+
+        player.addListener('player_state_changed', ({
+            track_window: { current_track }
+        }) => SpotifyDataService.updateTrack(playerDetails, current_track));
+
+        player.addListener('progress', ({ position }) => RenderService.updateTrackProgressBar(playerDetails, position));
+    }
+
+    static initPlayerActions(token, player) {
+        document.querySelector('.spotify-resume__play').onclick = async () => this.togglePlay(token, player);
+            document.querySelector('.playing-now').querySelector('.play-btn').onclick = async () => RenderService.togglePlay(token, player);
+            document.querySelector('.playing-now').querySelector('.fa-backward-step').onclick = async () => {
+                player.previousTrack();
+            };
+            document.querySelector('.playing-now').querySelector('.fa-forward-step').onclick = async () => {
+                player.nextTrack();
+            };
+            document.querySelector('.playing-now').querySelector('.fa-shuffle').onclick = async () => ApiSpotifyService.shuffleDevice();
+            document.querySelector('.playing-now').querySelector('.fa-repeat').onclick = async () => ApiSpotifyService.repeatDevice();
+    }
+
+    static async togglePlay(token, player) {
+        if (!LocalStorageService.getItem('device_id')) {
+            document.querySelector('.spotify-resume__main').classList.add('spotify-resume__main--playing-now');
+            await ApiSpotifyService.getActiveDevices(token);
+        }
+        
+        player.togglePlay();
+
+        const playBtn = document.querySelector('.spotify-resume__play').querySelector('.fa-play');
+        const pauseBtn = document.querySelector('.spotify-resume__play').querySelector('.fa-pause');
+
+        if (playBtn) {
+            playBtn.classList.remove('fa-play');
+            playBtn.classList.add('fa-pause');
+        } else {
+            pauseBtn.classList.remove('fa-pause');
+            pauseBtn.classList.add('fa-play');
+        }
+
+        const playingNow = document.querySelector('.playing-now');
+        const playingNowPlayBtn = document.querySelector('.playing-now').querySelector('.fa-play');
+        const playingNowPauseBtn = document.querySelector('.playing-now').querySelector('.fa-pause');
+
+        playingNow.style.display = 'flex';
+
+        if (playingNowPlayBtn) {
+            playingNowPlayBtn.classList.remove('fa-play');
+            playingNowPlayBtn.classList.add('fa-pause');
+        } else {
+            playingNowPauseBtn.classList.remove('fa-pause');
+            playingNowPauseBtn.classList.add('fa-play');
+        }
+    }
+
+    static createSpotifyScript() {
+        const script = document.createElement('script');
+        script.src = process.env.SPOTIFY_SDK;
+        script.async = true;
+
+        document.body.append(script);
     }
 }

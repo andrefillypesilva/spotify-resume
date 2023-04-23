@@ -4,5 +4,9 @@
         grid-row: 2 / 3;
 
         padding: 0 2rem;
+
+        &--playing-now {
+            padding: 0 2rem 5.625rem 2rem;
+        }
     }
 }

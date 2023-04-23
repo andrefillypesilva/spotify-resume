@@ -19,6 +19,18 @@
         }
     }
 
+    &--white {
+        background-color: var(--absolute-white-color);
+        color: var(--absolute-dark-color);
+        margin: auto 2rem;
+        width: 2rem;
+        height: 2rem;
+        
+        i {
+            font-size: 1rem;
+        }
+    }
+
     &--disabled {
         opacity: .3;
         cursor: initial;

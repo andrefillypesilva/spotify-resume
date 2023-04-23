@@ -46,6 +46,60 @@ export class ApiSpotifyService {
         await ApiSpotifyService.playActiveDevice(token, app.id);
     }
 
+    static async shuffleDevice() {
+        const token = LocalStorageService.getItem('token');
+        const deviceId = LocalStorageService.getItem('device_id');
+        const state = !JSON.parse(LocalStorageService.getItem('shuffle_state'));
+
+        const result = await fetch(`${process.env.SPOTIFY_SHUFFLE_URL}?device_id=${deviceId}&state=${state}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (result.status === 200 || result.status === 202) {
+            LocalStorageService.setItem('shuffle_state', state);
+
+            const shuffle = document.querySelector('.playing-now').querySelector('.fa-shuffle');
+            if (state) {
+                shuffle.classList.add('fa-shuffle--active');
+            } else {
+                shuffle.classList.remove('fa-shuffle--active');
+            }
+        }
+    }
+
+    static async repeatDevice() {
+        const token = LocalStorageService.getItem('token');
+        const deviceId = LocalStorageService.getItem('device_id');
+        let state = LocalStorageService.getItem('repeat_state');
+
+        if (state === null || state === '' || state === 'off') {
+            state = 'track';
+        } else {
+            state = 'off';
+        }
+
+        const result = await fetch(`${process.env.SPOTIFY_REPEAT_URL}?device_id=${deviceId}&state=${state}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (result.status === 200 || result.status === 202) {
+            LocalStorageService.setItem('repeat_state', state);
+
+            const repeat = document.querySelector('.playing-now').querySelector('.fa-repeat');
+            if (state === null || state === '' || state === 'off') {
+                repeat.classList.remove('fa-repeat--active');
+            } else {
+                repeat.classList.add('fa-repeat--active');
+            }
+        }
+    }
+
     static async playActiveDevice(token, device_id) {
         const body = {
             'context_uri': process.env.SPOTIFY_INITIAL_PLAYLIST,
@@ -65,28 +119,5 @@ export class ApiSpotifyService {
         });
 
         LocalStorageService.setItem('device_id', device_id);
-    }
-
-    static hasValidToken() {
-        const expires_in = LocalStorageService.getItem('expires_in');
-        let expiresDateTime = null;
-        let token = LocalStorageService.getItem('token');
-
-        if (expires_in) {
-            expiresDateTime = new Date();
-            expiresDateTime.setTime(expires_in);
-        }
-
-        return token &&
-                expiresDateTime &&
-                expiresDateTime >= new Date();
-    }
-
-    static setTokenInLocalStorage(tokenObj) {
-        const currentDatetime = new Date();
-        currentDatetime.setSeconds(currentDatetime.getSeconds() + tokenObj.expires_in);
-        
-        LocalStorageService.setItem('expires_in', currentDatetime.getTime());
-        LocalStorageService.setItem('token', tokenObj.access_token);
     }
 }
