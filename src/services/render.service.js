@@ -4,6 +4,14 @@ import { LocalStorageService } from './local-storage.service.js';
 import { SpotifyDataService } from './spotify-data.service.js';
 
 export class RenderService {
+    static setSectionTitles() {
+        document.querySelector('.spotify-resume__popular-title').textContent = 'Popular';
+        document.querySelector('.spotify-resume__discography-title').textContent = 'Discography';
+        document.querySelector('.spotify-resume__on-tour-title').textContent = 'On tour';
+        document.querySelector('.spotify-resume__appears-on-title').textContent = 'Appears On';
+        document.querySelector('.spotify-resume__about-title').textContent = 'About';
+    }
+
     static createGeneralDataElements(general, container) {
         const iconItem = HTMLElementFactory.createElement('i', 'fa-solid fa-certificate');
         const spanPositionItem = HTMLElementFactory.createElement('span', null, [], general.position);
@@ -327,15 +335,15 @@ export class RenderService {
 
     static initPlayerActions(token, player) {
         document.querySelector('.spotify-resume__play').onclick = async () => this.togglePlay(token, player);
-            document.querySelector('.playing-now').querySelector('.play-btn').onclick = async () => RenderService.togglePlay(token, player);
-            document.querySelector('.playing-now').querySelector('.fa-backward-step').onclick = async () => {
-                player.previousTrack();
-            };
-            document.querySelector('.playing-now').querySelector('.fa-forward-step').onclick = async () => {
-                player.nextTrack();
-            };
-            document.querySelector('.playing-now').querySelector('.fa-shuffle').onclick = async () => ApiSpotifyService.shuffleDevice();
-            document.querySelector('.playing-now').querySelector('.fa-repeat').onclick = async () => ApiSpotifyService.repeatDevice();
+        document.querySelector('.playing-now').querySelector('.play-btn').onclick = async () => RenderService.togglePlay(token, player);
+        document.querySelector('.playing-now').querySelector('.fa-backward-step').onclick = async () => {
+            player.previousTrack();
+        };
+        document.querySelector('.playing-now').querySelector('.fa-forward-step').onclick = async () => {
+            player.nextTrack();
+        };
+        document.querySelector('.playing-now').querySelector('.fa-shuffle').onclick = async () => ApiSpotifyService.shuffleDevice();
+        document.querySelector('.playing-now').querySelector('.fa-repeat').onclick = async () => ApiSpotifyService.repeatDevice();
     }
 
     static async togglePlay(token, player) {

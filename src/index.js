@@ -66,6 +66,7 @@ class Index {
     }
 
     async renderData() {
+        RenderService.setSectionTitles();
         await this.renderGeneralDataSection();
         await this.renderPersonalDataSection();
         await this.renderPopularProjectsSection();
