@@ -17,6 +17,38 @@ class Index {
     }
 
     init() {
+        if (SpotifyDataService.isSpotifyWidgetAllowed()) {
+            this.initSpotifyAuth();
+        } else {
+            this.renderAllowSpotifyModal();
+            document.querySelector('.spotify-resume__allow-spotify-modal-sure').onclick = () => {
+                RenderService.allowSpotifyWidget('sure');
+                this.initSpotifyAuth();
+            }
+            document.querySelector('.spotify-resume__allow-spotify-modal-no').onclick = () => {
+                RenderService.allowSpotifyWidget('no');
+                this.bootstrapApplication();
+            }
+        }
+    }
+
+    async bootstrapApplication() {
+        await this.renderData();
+        window.addEventListener('scroll', () => RenderService.stickyActionsBar());
+        RenderService.likeListener();
+        RenderService.tagMarketsListener();
+        
+        if (SpotifyDataService.isSpotifyWidgetAllowed()) {
+            this.createSpotifyInstance();
+
+            window.onbeforeunload = function()
+            {
+                LocalStorageService.removeItem('device_id');
+            };
+        }
+    }
+
+    initSpotifyAuth() {
         const params = new URLSearchParams(window.location.search);
         
         if (SpotifyDataService.hasValidToken()) {
@@ -31,19 +63,6 @@ class Index {
         } else {
             ApiSpotifyService.auth();
         }
-    }
-
-    async bootstrapApplication() {
-        await this.renderData();
-        window.addEventListener('scroll', () => RenderService.stickyActionsBar());
-        RenderService.likeListener();
-        RenderService.tagMarketsListener();
-        this.createSpotifyInstance();
-        
-        window.onbeforeunload = function()
-        {
-            LocalStorageService.removeItem('device_id');
-        };
     }
 
     async renderData() {
@@ -123,6 +142,10 @@ class Index {
         RenderService.createPlayingNowElements(container);
     }
 
+    renderAllowSpotifyModal() {
+        RenderService.createAllowSpotifyModalElements();
+    }
+
     createSpotifyInstance() {
         const token = LocalStorageService.getItem('token');
         RenderService.createSpotifyScript();
@@ -131,7 +154,7 @@ class Index {
             const player = new window.Spotify.Player({
                 name: process.env.SPOTIFY_PLAYER_NAME,
                 getOAuthToken: cb => { cb(token); },
-                volume: 1,
+                volume: .8,
             });
 
             player.connect().then(() => RenderService.spotifyPlayerConnected(player, this.playerDetails));

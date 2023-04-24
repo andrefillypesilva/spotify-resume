@@ -229,6 +229,16 @@ export class RenderService {
         container.append(details);
     }
 
+    static createAllowSpotifyModalElements() {
+        const noBtn = HTMLElementFactory.createElement('button', 'spotify-resume__allow-spotify-modal-no heading-light', [], 'No');
+        const sureBtn = HTMLElementFactory.createElement('button', 'spotify-resume__allow-spotify-modal-sure heading-light', [], 'Sure!');
+        const actions = HTMLElementFactory.createElement('div', 'spotify-resume__allow-spotify-modal-actions', [], null, null, [sureBtn, noBtn]);
+        const title = HTMLElementFactory.createElement('h2', 'heading-title', [], 'Allow Spotify on this page to have a better experience?');
+        const modal = HTMLElementFactory.createElement('section', 'spotify-resume__allow-spotify-modal', [], null, null, [title, actions]);
+
+        document.body.append(modal);
+    }
+
     static scrollListener(position) {
         let opacity = 1;
         opacity = 1000 - (position * 3.5);
@@ -368,5 +378,10 @@ export class RenderService {
         script.async = true;
 
         document.body.append(script);
+    }
+
+    static allowSpotifyWidget(action) {
+        LocalStorageService.setItem('is_spotify_widget_allowed', action === 'sure');
+        document.querySelector('.spotify-resume__allow-spotify-modal').style.display = 'none';
     }
 }

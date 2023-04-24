@@ -1,6 +1,10 @@
 import { LocalStorageService } from './local-storage.service.js';
 
 export class SpotifyDataService {
+    static isSpotifyWidgetAllowed() {
+        return JSON.parse(LocalStorageService.getItem('is_spotify_widget_allowed'));
+    }
+
     static hasValidToken() {
         const expires_in = LocalStorageService.getItem('expires_in');
         let expiresDateTime = null;
