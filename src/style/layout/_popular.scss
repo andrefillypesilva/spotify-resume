@@ -96,5 +96,29 @@
                 }
             }
         }
+
+        @media only screen and (max-width: 37.5rem) {
+            padding: 0 1.5rem;
+
+            &-list-item {
+                grid-template-columns: repeat(2, auto) 2fr;
+                padding: .5rem 1rem .5rem;
+            }
+
+            &-list-link {
+                transform: translateY(-.5rem);
+            }
+
+            &-list-info:first-of-type {
+                grid-column: 3 / -1;
+                text-align: start;
+                font-size: .75rem;
+                transform: translateY(-2rem);
+            }
+
+            &-list-like, &-list-info:last-of-type {
+                display: none;
+            }
+        }
     }
 }

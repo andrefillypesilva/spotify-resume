@@ -5,5 +5,9 @@
 
         background-color: var(--absolute-dark-color);
         padding: 1.5rem;
+
+        @media only screen and (max-width: 37.5rem) {
+            display: none;
+        }
     }
 }

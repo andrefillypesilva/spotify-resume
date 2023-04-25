@@ -123,4 +123,28 @@
         text-align: center;
         font-size: .8rem;
     }
+
+    @media only screen and (max-width: 37.5rem) {
+        &__player-control {
+            &-actions {
+                justify-content: end;
+            }
+
+            &-progress-bar {
+                position: absolute;
+                height: 1.25rem;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+
+                &--full {
+                    border-radius: 0;
+                }
+            }
+        }
+
+        &__player-details, .fa-shuffle, .fa-backward-step, .fa-forward-step, .fa-repeat {
+            display: none;
+        }
+    }
 }

@@ -63,5 +63,11 @@
                 transition: all .3s;
             }
         }
+
+        @media only screen and (max-width: 37.5rem) {
+            &-container {
+                overflow-x: scroll;
+            }
+        }
     }
 }

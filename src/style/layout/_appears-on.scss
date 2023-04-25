@@ -5,5 +5,11 @@
         &-title {
             margin-bottom: 1.5rem;
         }
+
+        @media only screen and (max-width: 37.5rem) {
+            .spotify-resume__card-container {
+                grid-template-columns: repeat(3, 12.75rem);
+            }
+        }
     }
 }

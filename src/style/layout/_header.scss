@@ -31,14 +31,7 @@
         }
 
         &-badge {
-            @include flex-center;
-            gap: .5rem;
-            font-size: .875rem;
-            z-index: 1;
-
-            i {
-                color: var(--primary-blue-color);
-            }
+            @include badge;
         }
 
         &-title {
@@ -50,6 +43,23 @@
         &-description {
             font-size: 1rem;
             z-index: 1;
+        }
+
+        @media only screen and (max-width: 37.5rem) {
+            padding: 0 1.5rem 1rem;
+
+            &-title {
+                font-size: 5rem;
+            }
+
+            &-badge {
+                display: none;
+            }
+
+            &::before {
+                background-size: auto var(--bg-size);
+                background-position-y: bottom;
+            }
         }
     }
 }

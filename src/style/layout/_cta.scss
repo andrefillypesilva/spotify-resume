@@ -9,5 +9,11 @@
             font-size: 1.5rem;
             transition: all .3s;
         }
+
+        @media only screen and (max-width: 37.5rem) {
+            justify-content: center;
+            height: 5rem;
+            padding: 1rem 1.5rem;
+        }
     }
 }

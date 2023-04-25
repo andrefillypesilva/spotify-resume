@@ -2,3 +2,14 @@
     display: flex;
     align-items: center;
 }
+
+@mixin badge {
+    @include flex-center;
+    gap: .5rem;
+    font-size: .875rem;
+    z-index: 1;
+
+    i {
+        color: var(--primary-blue-color);
+    }
+}

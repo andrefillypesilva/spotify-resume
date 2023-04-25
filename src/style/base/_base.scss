@@ -15,3 +15,9 @@ i {
     font-size: 1.4rem;
     font-weight: 300;
 }
+
+@media only screen and (max-width: 37.5rem) {
+    html {
+        font-size: 80%;
+    }
+}

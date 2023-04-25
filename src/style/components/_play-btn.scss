@@ -40,4 +40,16 @@
             background-color: var(--primary-green-color);
         }
     }
+
+    @media only screen and (max-width: 37.5rem) {
+        &--white {
+            width: 3.5rem;
+            height: 3.5rem;
+            margin: auto 0rem;
+
+            i {
+                font-size: 1.4rem;
+            }
+        }
+    }
 }

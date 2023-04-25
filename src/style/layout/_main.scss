@@ -8,5 +8,9 @@
         &--playing-now {
             padding: 0 2rem 5.625rem 2rem;
         }
+
+        @media only screen and (max-width: 37.5rem) {
+            grid-column: 1 / -1;
+        }
     }
 }

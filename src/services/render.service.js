@@ -185,8 +185,12 @@ export class RenderService {
         const aboutInfoAchievementItem = document.createElement('div');
         const aboutDescriptionItem = document.createElement('div');
 
+        const badgeIconItem = HTMLElementFactory.createElement('i', 'fa-solid fa-certificate');
+        const badgeSpanPositionItem = HTMLElementFactory.createElement('span', null, [], about.position);
+        const badgePositionItem = HTMLElementFactory.createElement('h4', 'spotify-resume__about-badge heading-normal', [], null, null, [badgeIconItem, badgeSpanPositionItem]);
+
         spanPositionItem.className = 'heading-bold';
-        spanPositionItem.textContent = `#${about.position}`;
+        spanPositionItem.textContent = `#${about.positionInTheWorld}`;
 
         positionItem.className = 'spotify-resume__about-position heading-light';
         positionItem.append(spanPositionItem);
@@ -202,6 +206,7 @@ export class RenderService {
         aboutInfoItem.append(aboutInfoAchievementItem);
         aboutInfoItem.append(aboutDescriptionItem);
 
+        container.append(badgePositionItem);
         container.append(positionItem);
         container.append(aboutInfoItem);
     }
@@ -251,7 +256,7 @@ export class RenderService {
         let opacity = 1;
         opacity = 1000 - (position * 3.5);
 
-        const size = 100 + (position / 100);
+        const size = 100 - (position / 50);
         opacity = opacity / 1000;
 
         if (opacity < 0) opacity = 0;
@@ -308,7 +313,12 @@ export class RenderService {
 
         ctaBar.classList.remove('fixed');
         popularSection.classList.remove('below-fixed');
-        if (window.scrollY >= ctaBar.offsetTop + 16) {
+        console.log('window.scrollY: ', window.scrollY);
+        console.log('ctaBar.offsetTop: ', ctaBar.offsetTop);
+
+        const dynamicTerm = window.innerWidth > 600 ? 16 : 0;
+
+        if (window.scrollY >= ctaBar.offsetTop + dynamicTerm) {
             ctaBar.classList.add('fixed');
             popularSection.classList.add('below-fixed');
             ctaTitle.classList.remove('invisible');

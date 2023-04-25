@@ -43,5 +43,42 @@
             padding: 2.5rem;
             max-width: 42rem;
         }
+
+        &-badge {
+            @include badge;
+            display: none;
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            text-transform: uppercase;
+            text-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
+        }
+
+        @media only screen and (max-width: 37.5rem) {
+            &-container {
+                background-size: auto 100%;
+                background-position: center;
+            }
+
+            &-position {
+                top: -1.5rem;
+                right: -.5rem;
+                background-color: var(--absolute-white-color);
+                color: var(--absolute-dark-color);
+            }
+
+            &-info {
+                padding: 1.5rem;
+            }
+
+            &-description {
+                max-height: 6.25rem;
+                overflow: scroll;
+            }
+
+            &-badge {
+                display: flex;
+            }
+        }
     }
 }
