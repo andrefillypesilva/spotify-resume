@@ -26,6 +26,7 @@
                 border-radius: 2rem;
                 font-size: 1.5rem;
                 cursor: pointer;
+                color: var(--absolute-dark-color);
 
                 &:first-of-type {
                     background: var(--primary-green-color);
@@ -39,6 +40,12 @@
                 &:hover {
                     transform: scale(1.01) translateY(-.1rem);
                 }
+            }
+        }
+
+        @media only screen and (max-width: 37.5rem) {
+            .heading-title {
+                font-size: 4rem;
             }
         }
     }
