@@ -12,7 +12,7 @@ export class ApiSpotifyService {
             response_type: 'code',
             client_id: process.env.SPOTIFY_CLIENT_ID,
             scope,
-            redirect_uri,
+            redirect_uri: redirectUri,
         });
 
         window.location.href = `${process.env.SPOTIFY_AUTH_URL}` + auth_query_parameters.toString();
