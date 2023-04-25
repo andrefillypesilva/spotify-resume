@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "webpack --mode development",
-    "serve": "npm run build &  webpack-dev-server --config ./webpack.config.js --mode development"
+    "serve": "npm run build &  webpack-dev-server --config ./webpack.config.js --mode development",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "babel": {
     "presets": [
@@ -32,6 +33,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "dotenv-webpack": "^8.0.1",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "node-sass": "^8.0.0",
     "sass-loader": "^13.2.1",
