@@ -86,42 +86,26 @@ export class RenderService {
         for (let i = 0; i < cards.length; i++) {
             const cardsItem = cards[i];
 
-            const divItem = document.createElement('div');
-            const imgItem = document.createElement('img');
-            const playItem = document.createElement('div');
-            const iconItem = document.createElement('i');
-            const titleItem = document.createElement('h3');
-            const descriptionItem = document.createElement('p');
-            const timeItem = document.createElement('time');
-            const positionItem = document.createElement('span');
+            const iconItem = HTMLElementFactory.createElement('i', 'fa-solid fa-play');
+            const playItem = HTMLElementFactory.createElement('div', 'spotify-resume__card-icon play-btn', [], null, null, [iconItem]);
 
-            iconItem.className = 'fa-solid fa-play';
-            playItem.className = 'spotify-resume__card-icon play-btn';
-            playItem.append(iconItem);
+            const timeItem = HTMLElementFactory.createElement('time', null, [
+                { key: 'datetime', value: cardsItem.year }
+            ], cardsItem.period);
 
-            timeItem.setAttribute('datetime', cardsItem.year);
-            timeItem.textContent = cardsItem.period;
-            positionItem.className = 'spotify-resume__card-description-position';
-            positionItem.textContent = cardsItem.position;
-            descriptionItem.className = 'spotify-resume__card-description heading-light';
-            descriptionItem.append(timeItem);
-            descriptionItem.append(positionItem);
-
-            divItem.className = 'spotify-resume__card';
-            if (cardsItem.group) divItem.setAttribute('data-group', cardsItem.group.join(','));
-
-            imgItem.className = 'spotify-resume__card-image';
+            const positionItem = HTMLElementFactory.createElement('span', 'spotify-resume__card-description-position', [], cardsItem.position);
+            const descriptionItem = HTMLElementFactory.createElement('p', 'spotify-resume__card-description heading-light', [], null, null, [timeItem, positionItem]);
+            
+            const imgItem = HTMLElementFactory.createElement('img', 'spotify-resume__card-image', [
+                { key: 'src', value: cardsItem.img.path },
+                { key: 'alt', value: cardsItem.img.alt }
+            ]);
             if (cardsItem.label === 'Smart Consulting') imgItem.classList.add('spotify-resume__card-image--padding');
-            imgItem.setAttribute('src', cardsItem.img.path);
-            imgItem.setAttribute('alt', cardsItem.img.alt);
 
-            titleItem.className = 'spotify-resume__card-title';
-            titleItem.textContent = cardsItem.label;
+            const titleItem = HTMLElementFactory.createElement('h3', 'spotify-resume__card-title', [], cardsItem.label);
 
-            divItem.append(imgItem);
-            divItem.append(playItem);
-            divItem.append(titleItem);
-            divItem.append(descriptionItem);
+            const divItem = HTMLElementFactory.createElement('div', 'spotify-resume__card', [], null, null, [imgItem, playItem, titleItem, descriptionItem]);
+            if (cardsItem.group) divItem.setAttribute('data-group', cardsItem.group.join(','));
 
             list.append(divItem);
         }
@@ -131,12 +115,11 @@ export class RenderService {
         for (let i = 0; i < markets.length; i++) {
             const marketsItem = markets[i];
 
-            const btnItem = document.createElement('button');
+            const btnItem = HTMLElementFactory.createElement('button', 'spotify-resume__discography-markets-btn heading-light', [
+                { key: 'data-group', value: marketsItem.group }
+            ], marketsItem.label);
 
-            btnItem.className = 'spotify-resume__discography-markets-btn heading-light';
             if (i === 0) btnItem.classList.add('spotify-resume__discography-markets-btn--active');
-            btnItem.setAttribute('data-group', marketsItem.group);
-            btnItem.textContent = marketsItem.label;
 
             list.append(btnItem);
         }
@@ -145,66 +128,32 @@ export class RenderService {
     static createOnTourElements(onTour, list) {
         for (let i = 0; i < onTour.length; i++) {
             const onTourItem = onTour[i];
+            
+            const dateSpanItem = HTMLElementFactory.createElement('span', null, [], onTourItem.month);
+            
+            const timeItem = HTMLElementFactory.createElement('time', null, [
+                { key: 'datetime', value: onTourItem.year }
+            ], onTourItem.year);
 
-            const liItem = document.createElement('li');
-            const dateItem = document.createElement('div');
-            const dateSpanItem = document.createElement('span');
-            const timeItem = document.createElement('time');
-            const infoItem = document.createElement('div');
-            const titleItem = document.createElement('h4');
-            const descriptionItem = document.createElement('p');
-
-            dateSpanItem.textContent = onTourItem.month;
-            timeItem.setAttribute('datetime', onTourItem.year);
-            timeItem.textContent = onTourItem.year;
-
-            dateItem.className = 'spotify-resume__on-tour-item-date';
-            dateItem.append(dateSpanItem);
-            dateItem.append(timeItem);
-
-            titleItem.textContent = onTourItem.title;
-            descriptionItem.className = 'heading-light';
-            descriptionItem.textContent = onTourItem.description;
-
-            infoItem.className = 'spotify-resume__on-tour-item-description';
-            infoItem.append(titleItem);
-            infoItem.append(descriptionItem);
-
-            liItem.className = 'spotify-resume__on-tour-item';
-            liItem.append(dateItem);
-            liItem.append(infoItem);
-
+            const dateItem = HTMLElementFactory.createElement('div', 'spotify-resume__on-tour-item-date', [], null, null, [dateSpanItem, timeItem]);
+            const titleItem = HTMLElementFactory.createElement('h4', null, [], onTourItem.title);
+            const descriptionItem = HTMLElementFactory.createElement('p', 'heading-light', [], onTourItem.description);
+            const infoItem = HTMLElementFactory.createElement('div', 'spotify-resume__on-tour-item-description', [], null, null, [titleItem, descriptionItem]);
+            const liItem = HTMLElementFactory.createElement('li', 'spotify-resume__on-tour-item', [], null, null, [dateItem, infoItem]);
+            
             list.append(liItem);
         }
     }
 
     static createAboutElements(about, container) {
-        const positionItem = document.createElement('div');
-        const spanPositionItem = document.createElement('span');
-        const aboutInfoItem = document.createElement('div');
-        const aboutInfoAchievementItem = document.createElement('div');
-        const aboutDescriptionItem = document.createElement('div');
-
         const badgeIconItem = HTMLElementFactory.createElement('i', 'fa-solid fa-certificate');
         const badgeSpanPositionItem = HTMLElementFactory.createElement('span', null, [], about.position);
         const badgePositionItem = HTMLElementFactory.createElement('h4', 'spotify-resume__about-badge heading-normal', [], null, null, [badgeIconItem, badgeSpanPositionItem]);
-
-        spanPositionItem.className = 'heading-bold';
-        spanPositionItem.textContent = `#${about.positionInTheWorld}`;
-
-        positionItem.className = 'spotify-resume__about-position heading-light';
-        positionItem.append(spanPositionItem);
-        positionItem.append(' in the world');
-
-        aboutInfoAchievementItem.className = 'spotify-resume__about-title';
-        aboutInfoAchievementItem.textContent = about.achievement;
-
-        aboutDescriptionItem.className = 'spotify-resume__about-description heading-light';
-        aboutDescriptionItem.innerHTML = about.description;
-
-        aboutInfoItem.className = 'spotify-resume__about-info';
-        aboutInfoItem.append(aboutInfoAchievementItem);
-        aboutInfoItem.append(aboutDescriptionItem);
+        const spanPositionItem = HTMLElementFactory.createElement('span', 'heading-bold', [], `#${about.positionInTheWorld}`);
+        const positionItem = HTMLElementFactory.createElement('div', 'spotify-resume__about-position heading-light', [], null, null, [spanPositionItem, ' in the world']);
+        const aboutInfoAchievementItem = HTMLElementFactory.createElement('div', 'spotify-resume__about-title', [], about.achievement);
+        const aboutDescriptionItem = HTMLElementFactory.createElement('div', 'spotify-resume__about-description heading-light', [], null, about.description);
+        const aboutInfoItem = HTMLElementFactory.createElement('div', 'spotify-resume__about-info', [], null, null, [aboutInfoAchievementItem, aboutDescriptionItem]);
 
         container.append(badgePositionItem);
         container.append(positionItem);
