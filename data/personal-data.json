@@ -1,0 +1,31 @@
+{
+    "listItems": [
+        {
+            "link": "https://goo.gl/maps/1YrJmVGPjACkMpfs9",
+            "icon": "fa-solid fa-house",
+            "label": "Lisbon, Portugal"
+        },
+        {
+            "link": "tel:+351912328102",
+            "icon": "fa-solid fa-phone",
+            "label": "+351 912 328 102"
+        },
+        {
+            "link": "mailto:andrefillype10@gmail.com",
+            "icon": "fa-solid fa-envelope",
+            "label": "andrefillype10@gmail.com"
+        }
+    ],
+    "socialListItems": [
+        {
+            "link": "https://github.com/andrefillypesilva",
+            "icon": "fa-brands fa-github",
+            "label": "@andrefillypesilva"
+        },
+        {
+            "link": "https://www.linkedin.com/in/andrefillype/",
+            "icon": "fa-brands fa-linkedin-in",
+            "label": "@andrefillype"
+        }
+    ]
+}

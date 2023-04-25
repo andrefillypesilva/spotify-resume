@@ -1,0 +1,59 @@
+{
+    "popular": [
+        {
+            "image": {
+                "path": "./assets/OTBVS_Logo.png",
+                "alt": "OTBVS Logo"
+            },
+            "label": "Online TestDrive Booking",
+            "technologies": [
+                "Vue", "VanillaJS", "GraphQL"
+            ],
+            "period": "2021-2023"
+        },
+        {
+            "image": {
+                "path": "./assets/Outgo_App.png",
+                "alt": "Outgo App"
+            },
+            "label": "Outgo App",
+            "technologies": [
+                "Ionic", "Angular", "Rails"
+            ],
+            "period": "2019"
+        },
+        {
+            "image": {
+                "path": "./assets/Edge_Logo.jpeg",
+                "alt": "Edge Logo"
+            },
+            "label": "CMS for telephone companies",
+            "technologies": [
+                "Angular", "VanillaJS"
+            ],
+            "period": "2020-2021"
+        },
+        {
+            "image": {
+                "path": "./assets/Npm_Logo.png",
+                "alt": "Npm Logo"
+            },
+            "label": "datastructures-es6 NPM package (single)",
+            "technologies": [
+                "VanillaJS", "Data Structures"
+            ],
+            "period": "2023"
+        },
+        {
+            "image": {
+                "path": "./assets/TCE_Logo.jpeg",
+                "alt": "TCE Logo"
+            },
+            "label": "Portal do Gestor",
+            "technologies": [
+                "Angular", ".NET", "SQL Server"
+            ],
+            "period": "2015-2018"
+        }
+    ]
+}

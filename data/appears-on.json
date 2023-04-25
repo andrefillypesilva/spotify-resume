@@ -1,0 +1,34 @@
+{
+    "appearsOn": [
+        {
+            "img": {
+                "path": "./assets/UE_Logo.jpeg",
+                "alt": "Universidade Europeia Logo"
+            },
+            "label": "Universidade Europeia",
+            "year": "2022",
+            "period": "2021-2022",
+            "position": "Postgraduate degree in Web Front-End Programming"
+        },
+        {
+            "img": {
+                "path": "./assets/UNP_Logo.png",
+                "alt": "Universidade Potiguar Logo"
+            },
+            "label": "Universidade Potiguar",
+            "year": "2018",
+            "period": "2016-2018",
+            "position": "Bachelor's Degree in Systems Analysis and Development"
+        },
+        {
+            "img": {
+                "path": "./assets/IFRN_Logo.jpeg",
+                "alt": "Instituto Federal Logo"
+            },
+            "label": "Instituto Federal",
+            "year": "2012",
+            "period": "2009-2012",
+            "position": "IT Certificate"
+        }
+    ]
+}

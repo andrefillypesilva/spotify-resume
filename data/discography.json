@@ -1,0 +1,133 @@
+{
+    "markets": [
+        {
+            "label": "Popular releases",
+            "group": "popular"
+        },
+        {
+            "label": "Worldwide",
+            "group": "worldwide"
+        },
+        {
+            "label": "Brazil",
+            "group": "brazil"
+        },
+        {
+            "label": "Germany",
+            "group": "germany"
+        },
+        {
+            "label": "Indonesia",
+            "group": "indonesia"
+        },
+        {
+            "label": "Italy",
+            "group": "italy"
+        },
+        {
+            "label": "Portugal",
+            "group": "portugal"
+        },
+        {
+            "label": "Qatar",
+            "group": "qatar"
+        },
+        {
+            "label": "Uruguay",
+            "group": "uruguay"
+        }
+    ],
+    "discography": [
+        {
+            "group": [
+                "popular",
+                "worldwide",
+                "germany",
+                "portugal"
+            ],
+            "img": {
+                "path": "./assets/MBio_Logo.jpeg",
+                "alt": "Mbio Logo"
+            },
+            "label": "Mercedes-Benz.io",
+            "year": "2021",
+            "period": "Current",
+            "position": "Frontend Engineer"
+        },
+        {
+            "group": [
+                "popular",
+                "brazil",
+                "indonesia",
+                "portugal",
+                "qatar",
+                "uruguay"
+            ],
+            "img": {
+                "path": "./assets/Edge_Logo.jpeg",
+                "alt": "Edge Logo"
+            },
+            "label": "Edge",
+            "year": "2020",
+            "period": "2020-2021",
+            "position": "Senior Angular Developer"
+        },
+        {
+            "group": [
+                "popular",
+                "italy",
+                "portugal"
+            ],
+            "img": {
+                "path": "./assets/Smart_Logo.png",
+                "alt": "Smart Consulting Logo"
+            },
+            "label": "Smart Consulting",
+            "year": "2020",
+            "period": "2020",
+            "position": "Mid-level C# Developer"
+        },
+        {
+            "group": [
+                "popular",
+                "brazil"
+            ],
+            "img": {
+                "path": "./assets/Outgo_Logo.jpeg",
+                "alt": "Outgo Logo"
+            },
+            "label": "Outgo",
+            "year": "2019",
+            "period": "2019",
+            "position": "Mid-level Web Developer"
+        },
+        {
+            "group": [
+                "popular",
+                "brazil"
+            ],
+            "img": {
+                "path": "./assets/TCE_Logo.jpeg",
+                "alt": "TCE/RN Logo"
+            },
+            "label": "TCE/RN",
+            "year": "2015",
+            "period": "2015-2018",
+            "position": "Mid-Level Web Developer"
+        },
+        {
+            "group": [
+                "popular",
+                "brazil"
+            ],
+            "img": {
+                "path": "./assets/Mobster_Logo.png",
+                "alt": "Mobster Logo"
+            },
+            "label": "Mobster",
+            "year": "2013",
+            "period": "2013-2015",
+            "position": "Junior Web Developer"
+        }
+    ]
+}
