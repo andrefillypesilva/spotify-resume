@@ -1,6 +1,6 @@
 {
   "name": "spotify-resume",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This is Andre's resume/portfolio as a Spotify page.",
   "main": "index.js",
   "type": "module",

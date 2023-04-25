@@ -2,6 +2,7 @@ import { LocalStorageService } from './local-storage.service.js';
 
 export class ApiSpotifyService {
     static async auth() {
+        const redirectUri = `${window.location.origin}${window.location.pathname}?auth=true`;
         const scope = 'streaming \
         user-read-email \
         user-read-private \
@@ -11,14 +12,14 @@ export class ApiSpotifyService {
             response_type: 'code',
             client_id: process.env.SPOTIFY_CLIENT_ID,
             scope,
-            redirect_uri: `${window.location.origin}?auth=true`,
+            redirect_uri,
         });
 
         window.location.href = `${process.env.SPOTIFY_AUTH_URL}` + auth_query_parameters.toString();
     }
 
     static async getToken(code) {
-        const redirectUri = `${window.location.origin}?auth=true`;
+        const redirectUri = `${window.location.origin}${window.location.pathname}?auth=true`;
 
         const result = await fetch(process.env.SPOTIFY_TOKEN_URL, {
             method: 'POST',

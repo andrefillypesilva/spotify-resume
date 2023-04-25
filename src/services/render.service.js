@@ -313,8 +313,6 @@ export class RenderService {
 
         ctaBar.classList.remove('fixed');
         popularSection.classList.remove('below-fixed');
-        console.log('window.scrollY: ', window.scrollY);
-        console.log('ctaBar.offsetTop: ', ctaBar.offsetTop);
 
         const dynamicTerm = window.innerWidth > 600 ? 16 : 0;
 
