@@ -45,6 +45,26 @@
             z-index: 1;
         }
 
+        &-github-badge {
+            position: fixed;
+            right: -3.5rem;
+            top: 3.5rem;
+            transform: rotate(45deg);
+            z-index: 10;
+
+            &-link {
+                color: var(--absolute-white-color);
+                text-decoration: none;
+                display: flex;
+                background-color: var(--highlight-dark-color);
+                padding: .5rem 3.5rem;
+            }
+
+            &-icon {
+                margin-left: .5rem;
+            }
+        }
+
         @media only screen and (max-width: 37.5rem) {
             padding: 0 1.5rem 1rem;
 
