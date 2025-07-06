@@ -1,8 +1,8 @@
 {
-    "about": {
-        "position": "Verified Web Engineer",
-        "positionInTheWorld": "5",
-        "achievement": "81,803,969 lines of code written per month",
-        "description": "<p>Full Stack Engineer for almost ten years with solid knowledge in web development, having worked for different markets, including Latin America, Europe, and the Middle East. A self-organized and persistent programmer who is able to be resilient in brand-new environments and share knowledge with clarity, either on a daily basis or while mentoring someone. Always eager to take a step back to learn and grow as a web artist.</p>"
-    }
+  "about": {
+    "position": "Verified Web Engineer",
+    "positionInTheWorld": "5",
+    "achievement": "81,803,969 lines of code written per month",
+    "description": "<p>Experienced Frontend Engineer with 10 years building scalable web applications using TypeScript and modern frameworks like Angular and Vue.js. Strong focus on developer experience, clean architecture, design system, reusable components, and solid engineering practices such as CI/CD and automated unit and e2e testing.</p><p>Collaborative team player with a background in remote, cross-functional teams. Passionate about learning brand-new technologies, eager to contribute to impactful platforms that can change the world.</p>"
+  }
 }
